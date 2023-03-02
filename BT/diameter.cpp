@@ -21,7 +21,20 @@ int heightOfTree(node* root){
 
     return ans;
 }
+int diameterOfBinaryTree(node* root){
+    // base case
+    if(root == NULL)
+        return 0;
+    
+    int op1 = diameterOfBinaryTree(root->left);
+    int op2 = diameterOfBinaryTree(root->right);
+    int op3 = heightOfTree(root->left) + heightOfTree(root->right) +1;
 
+    int ans = max(op3,(max(op1,op2)));
+    
+    return ans;
+
+}
 int main()
 {
     node *root = NULL;
