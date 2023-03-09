@@ -17,6 +17,8 @@ public:
 
 void solve(Node *root, int sum, int &maxsum, int len, int &maxlen)
 {
+    // bro leaf pe aagye hai to apne answer ko update krna hai
+    // check krlo ki is wali leaf ki len max hai ya nhi
     if (root == NULL)
     {
         if (len > maxlen)
@@ -29,7 +31,6 @@ void solve(Node *root, int sum, int &maxsum, int len, int &maxlen)
         {
             maxsum = max(sum, maxsum);
         }
-
         return;
     }
 
