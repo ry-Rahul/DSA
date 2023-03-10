@@ -17,7 +17,9 @@ public:
 
 vector<int> verticalOrder(node *root)
 {
+    // HD mapped with levelwise nodes levelwise means every level has its own vector      
     map<int, map<int, vector<int>>> nodes;
+    //        root node     HD   level
     queue<pair<node *, pair<int, int>>> q;
     vector<int> ans;
 
