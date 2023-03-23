@@ -1,6 +1,7 @@
 #include <bits/stdc++.h>
 using namespace std;
 
+// !class BST_____________________________________
 class BST
 {
 private:
@@ -28,6 +29,7 @@ public:
     void deletenode (int data);
 };
 
+//! function insert_______________________________
 void BST::insert(int data)
 {
     node *n = new node;
@@ -77,10 +79,14 @@ void BST::insert(int data)
         } // end of while loop
     }     // end of else
 }
+
+// !function delete________________________________
 void BST::deletenode(int data)
 {
 
 }
+
+//!function inorder_____________________________________
 void BST::preorderT(node *ptr)
 {
     if(ptr)
@@ -90,12 +96,13 @@ void BST::preorderT(node *ptr)
         preorderT(ptr->right);
     }
 }
+// !function preorder_____________________________________
 void BST::preorder()
 {
     preorderT(root);
 }
 
-
+// !function postorder_____________________________________
 void BST::postorderT(node *ptr)
 {
     if(ptr)
@@ -129,7 +136,7 @@ int main()
 {
 
     BST tree;
-    BST node *root = NULL;
+    // BST node* root = NULL;
 
     tree.insert(50);
     tree.insert(70);
