@@ -20,13 +20,14 @@ int ans = 0;
             return;
         }
 
+// left 
         solve(root->left,i,k);
        
-
+// node value
         i++;
         if(i==k)
         ans = root->val;
-
+// right subtree
         solve(root->right,i ,k);
     }
     int kthSmallest(TreeNode* root, int k) {
