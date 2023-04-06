@@ -1,6 +1,6 @@
 // package QueueJava;
 
-// class Node 
+// class Node  
 class Node {
     int data;
     Node next;
