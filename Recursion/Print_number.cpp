@@ -25,6 +25,7 @@ int main()
     cin >> n;
 
     sayDigit(n, str);
+    // 
 
     return 0;
 }
