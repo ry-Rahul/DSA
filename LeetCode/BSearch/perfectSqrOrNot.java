@@ -18,5 +18,6 @@ public class perfectSqrOrNot {
     public static void main(String[] args) {
         int num = 25;
         boolean ans = isPerfectSquare(num);
+        System.out.println(ans);
     }
 }
