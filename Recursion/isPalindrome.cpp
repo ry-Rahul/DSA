@@ -3,20 +3,17 @@ using namespace std;
 
 bool isPalindrome(string &str, int i, int j)
 {
-    if (i < j)
-    {
-        if (str[i++] == str[j--])
-            return true && isPalindrome(str, i, j);
-        else
-            return false;
-    }
-    return true;
+    if (i > j)
+        return true;
+    if(str[i] != str[j])
+        return false;
+    return isPalindrome(str, i + 1, j - 1);
 }
 
 int main()
 {
 
-    string str = "wasdsae";
+    string str = "abcdcbak";
 
     bool ans = isPalindrome(str, 0, str.length() - 1);
 

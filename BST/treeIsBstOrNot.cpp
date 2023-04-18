@@ -49,16 +49,15 @@ void inorder(Node *root){
 }
 // !BST or NOT 
 bool solve(Node *root,int min,int max){
-    if(root==NULL){
+    if(root == NULL){
         return true;
     }
-
-    if(root->data >= min || root->data <= max){
-        bool left = solve(root->left, min, root->data);
-        bool right = solve(root->right, root->data, max);
-        return left && right;
+    if(root->data < min || root->data > max){
+        return false;
     }
-    return false;
+    bool leftValid = solve(root->left, min, root->data-1);
+    bool rightValid = solve(root->right, root->data+1, max);
+    return leftValid && rightValid;
 
 }
 
