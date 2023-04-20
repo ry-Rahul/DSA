@@ -127,7 +127,8 @@ int main(){
     root->right->right = new node(5);
 
     // inorder(root);
-    // levelOrderTraversal(root);
+    levelOrderTraversal(root);
+    cout<<endl;
     vector<int> ans = zigZagTraversal(root);
     for(auto i : ans){
         cout << i << " ";

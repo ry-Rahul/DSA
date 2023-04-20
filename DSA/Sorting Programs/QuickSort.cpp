@@ -6,7 +6,7 @@
 using namespace std;
 void show(int a[])
 {
-	for (int i = 0; i < 10; i++)
+	for (int i = 0; i < 11; i++)
 		cout << a[i] << " ";
 	cout << endl;
 }
@@ -80,11 +80,11 @@ int main()
 {
 	// system("color a");
 	// int i,j,k;
-	int a[] = {99, 53, 61, 74, 12, 31, 59, 82, 41, 7};
+	int a[] = {99, 53, 61, 74, 12, 31, 59, 82,82, 41, 7};
 	cout << "<<-----Quick sort----->>" << endl;
 	cout << endl;
 	show(a);
-	Quick_sort(a, 0, 9);
+	Quick_sort(a, 0, 10);
 	cout << endl;
 	show(a);
 	// getch();

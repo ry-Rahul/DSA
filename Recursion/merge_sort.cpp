@@ -39,6 +39,8 @@ void merge(int *arr,int start,int end)
          arr[k++] = second[index2++];
 
     // cout << "hii";
+    delete [] first;
+    delete [] second;
 }
 
 void mergesort(int *arr,int s,int e)
@@ -74,6 +76,7 @@ int main()
   printarr(arr, 14);
   mergesort(arr, 0, 14);
   printarr(arr, 14);
+
 
   return 0;
 }
