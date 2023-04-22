@@ -4,13 +4,26 @@ public class SingleEle {
         int start = 0;
         int end = arr.length - 1;
         int mid;
+        // boundary check
+        if(end ==0){
+            return arr[0];
+        }
+        if (arr[start] != arr[start + 1]) {
+            return arr[start];
+        }
+        if (arr[end] != arr[end - 1]) {
+            return arr[end];
+        }
         while (start <= end){
             mid = start + (end - start) / 2;
             if (arr[mid] != arr[mid - 1] && arr[mid] != arr[mid + 1]) {
                 return arr[mid];
             }
-            else if (arr[mid] != arr[mid + 1] && arr[mid] == arr[mid - 1]) {
-                
+            if(((mid%2)==0 && arr[mid]==arr[mid+1]) || ((mid%2)==1 && arr[mid]==arr[mid-1])){
+                start = mid + 1;
+            }
+            else{
+                end = mid - 1;
             }
         }
 
