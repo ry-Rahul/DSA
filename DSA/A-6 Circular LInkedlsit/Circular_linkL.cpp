@@ -6,21 +6,21 @@ using namespace std;
 #define vii vector<pii>
 #define rep(i, a, b) for (int i = a; i < b; i++)
 
-class node
+class Node
 {
 public:
     int data;
-    node *nxt;
+    Node *nxt;
 
-    node(int val)
+    Node(int val)
     {
         data = val;
         nxt = NULL;
     }
 };
-void dltAtLast(node *&head, int pos)
+void dltAtLast(Node *&head, int pos)
 {
-    node *temp = head, *t;
+    Node *temp = head, *t;
     int count = 1;
     while (temp != head)
     {
@@ -30,19 +30,19 @@ void dltAtLast(node *&head, int pos)
     t->nxt = temp->nxt;
     delete temp;
 }
-void display(node *head)
+void display(Node *head)
 {
-    node *temp = head;
+    Node *temp = head;
     do
     {
         cout << temp->data << "  ";
         temp = temp->nxt;
     } while (temp != head);
 }
-void insertAtHead(node *&head, int val)
+void insertAtHead(Node *&head, int val)
 {
-    node *n = new node(val);
-    node *temp = head;
+    Node *n = new Node(val);
+    Node *temp = head;
     if (head == NULL)
     {
         n->nxt = n;
@@ -58,10 +58,10 @@ void insertAtHead(node *&head, int val)
     n->nxt = head;
     head = n;
 }
-void insertAtTail(node *&head, int val)
+void insertAtTail(Node *&head, int val)
 {
-    node *n = new node(val);
-    node *temp = head;
+    Node *n = new Node(val);
+    Node *temp = head;
 
     if (head == NULL)
     {
@@ -77,7 +77,7 @@ void insertAtTail(node *&head, int val)
 }
 int main()
 {
-    node *head = NULL;
+    Node *head = NULL;
     insertAtTail(head, 45);
     insertAtTail(head, 78);
     insertAtTail(head, 89);

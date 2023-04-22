@@ -4,23 +4,23 @@
 #include <windows.h>
 using namespace std;
 int count = -1;
-class node
+class Node
 {
 public:
     int data;
-    node *nxt;
-    node *prev;
+    Node *nxt;
+    Node *prev;
 
-    node(int val)
+    Node(int val)
     {
         data = val;
         nxt = NULL;
         prev = NULL;
     }
 };
-void dltAtHead(node *&start)
+void dltAtHead(Node *&start)
 {
-    node *t;
+    Node *t;
     t = start;
     t->prev = NULL;
     t->nxt = NULL;
@@ -28,7 +28,7 @@ void dltAtHead(node *&start)
     delete t;
     count--;
 }
-void dltNode(node *&start, int pos)
+void dltNode(Node *&start, int pos)
 {
 
     if (pos == 1)
@@ -36,7 +36,7 @@ void dltNode(node *&start, int pos)
         dltAtHead(start);
         return;
     }
-    node *t, *n = NULL;
+    Node *t, *n = NULL;
     t = start;
     int count = 1;
     while (t != NULL)
@@ -62,19 +62,19 @@ void dltNode(node *&start, int pos)
     delete t;
     count--;
 }
-void insertAtHead(node *&start, int data)
+void insertAtHead(Node *&start, int data)
 {
-    node *n = new node(data);
+    Node *n = new Node(data);
 
     n->nxt = start;
     start->prev = n;
     start = n;
     count++;
 }
-void insertAtTail(node *&start, int data)
+void insertAtTail(Node *&start, int data)
 {
-    node *n = new node(data);
-    node *temp = start;
+    Node *n = new Node(data);
+    Node *temp = start;
 
     if (start == NULL)
     {
@@ -91,9 +91,9 @@ void insertAtTail(node *&start, int data)
     n->nxt = NULL;
     count++;
 }
-void display(node *start)
+void display(Node *start)
 {
-    node *temp = start;
+    Node *temp = start;
     while (temp)
     {
         cout << temp->data << " ";
@@ -101,11 +101,11 @@ void display(node *start)
     }
     cout << endl;
 }
-void evenafterodd(node *&start)
+void evenafterodd(Node *&start)
 {
-    node *odd = start;
-    node *even = start->nxt;
-    node *evenstart = even;
+    Node *odd = start;
+    Node *even = start->nxt;
+    Node *evenstart = even;
     while (odd->nxt != NULL && even->nxt != NULL)
     // motive last even node is null and
     { // if node is even even->nxt=NULL then evenstart start with the end of odd one
@@ -127,7 +127,7 @@ int main()
 {
     // system("color a");
 
-    node *start = NULL;
+    Node *start = NULL;
     insertAtTail(start, 1);
     insertAtTail(start, 2);
     insertAtTail(start, 3);

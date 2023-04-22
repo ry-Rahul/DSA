@@ -1,23 +1,23 @@
 #include<bits/stdc++.h>
 using namespace std;
 
-class node{
+class Node{
     public:
         int data;
-        node* left;
-        node* right;
-        node(int d){
+        Node* left;
+        Node* right;
+        Node(int d){
             data = d;
             left = NULL;
             right = NULL;
         }
 };
-void levelOrderTraversal(node *root){
-        queue<node *> q;
+void levelOrderTraversal(Node *root){
+        queue<Node *> q;
         q.push(root);
         q.push(NULL);
         while(!q.empty()){
-            node* temp = q.front();
+            Node* temp = q.front();
             q.pop();
 
             if(temp== NULL){
@@ -37,43 +37,43 @@ void levelOrderTraversal(node *root){
              }
         }
 }
-void buildFromLevelOrder(node *root){
-    queue<node*> q;
+void buildFromLevelOrder(Node *root){
+    queue<Node*> q;
     cout<<"Level Order Rebuilt"<<endl;
     int data;
     cin>>data;
-    root = new node(data);
+    root = new Node(data);
     q.push(root);
 
     while (!q.empty())
     {
-        node* temp= q.front();
+        Node* temp= q.front();
         q.pop();
 
         cout<<"Enter left child of "<<temp->data<<endl;
         cin>>data;
         if(data!=-1){
-            temp->left = new node(data);
+            temp->left = new Node(data);
             q.push(temp->left);
         }
         cout<<"Enter right child of "<<temp->data<<endl;
         cin>>data;
         if(data!=-1){
-            temp->right = new node(data);
+            temp->right = new Node(data);
             q.push(temp->right);
         }
     }
 
 }
 
-vector<int> zigZagTraversal(node *root){
+vector<int> zigZagTraversal(Node *root){
 
     vector<int> result;
     if(root==NULL){
         return result;
     }
     
-    queue<node*> q;
+    queue<Node*> q;
     q.push(root);
 
     bool leftToRight = true;
@@ -85,7 +85,7 @@ vector<int> zigZagTraversal(node *root){
 
         // level Process
         for(int i=0;i<size;i++){
-            node* frintNode = q.front();
+            Node* frintNode = q.front();
             q.pop();
 
             // normal insert of reverse 
@@ -111,7 +111,7 @@ vector<int> zigZagTraversal(node *root){
 }
 
 
-void inorder(node *root){
+void inorder(Node *root){
     if (root == NULL)
         return;
     inorder(root->left);
@@ -120,11 +120,11 @@ void inorder(node *root){
 }
 
 int main(){
-    node* root = new node(1);
-    root->left = new node(2);
-    root->right = new node(3);
-    root->right->left = new node(4);
-    root->right->right = new node(5);
+    Node* root = new Node(1);
+    root->left = new Node(2);
+    root->right = new Node(3);
+    root->right->left = new Node(4);
+    root->right->right = new Node(5);
 
     // inorder(root);
     levelOrderTraversal(root);

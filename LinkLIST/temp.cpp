@@ -1,18 +1,18 @@
 #include <iostream>
 using namespace std;
 
-class node
+class Node
 {
 public:
     int data;
-    node *next;
+    Node *next;
 };
 
 // node insert_at_beg(node *head)
 // {
 
 // }
-void insertion(node *&head)
+void insertion(Node *&head)
 {
     int d;
     cin >> d;
@@ -21,7 +21,7 @@ void insertion(node *&head)
 
     if (head == NULL)
     {
-        node *temp = new node;
+        Node *temp = new Node;
         temp->data = d;
         temp->next = NULL;
         head = temp;
@@ -29,21 +29,21 @@ void insertion(node *&head)
     else
     {
 
-        node *p= head;
+        Node *p= head;
 
         while (p->next != NULL)
         {
             p = p->next;
         }
-        node *temp = new node;
+        Node *temp = new Node;
         temp->data = d;
         temp->next = NULL;
         p->next = temp;
     }
 }
-void print(node *head)
+void print(Node *head)
 {
-    node *temp;
+    Node *temp;
     temp = head;
     while (temp != NULL)
     {
@@ -53,7 +53,7 @@ void print(node *head)
 }
 int main()
 {
-    node *head = NULL;
+    Node *head = NULL;
 
     int n = 0;
     cin >> n;

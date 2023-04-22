@@ -3,26 +3,26 @@ using namespace std;
 
 // declaring linked list
 
-class node
+class Node
 {
 public:
     int data;
-    node *next;
-    node(int val)
+    Node *next;
+    Node(int val)
     {
         data = val;
         next = NULL;
     }
 };
 // inserting element at head
-void insertAtHead(node *&head, int val)
+void insertAtHead(Node *&head, int val)
 {
-    node *n = new node(val);
+    Node *n = new Node(val);
     n->next = head;
     head = n;
 }
 // inserting element at tail
-void insertAtTail(node *&head, int val)
+void insertAtTail(Node *&head, int val)
 {
     if (head == NULL)
     {
@@ -30,9 +30,9 @@ void insertAtTail(node *&head, int val)
         return;
     }
 
-    node *n = new node(val);
+    Node *n = new Node(val);
 
-    node *temp = head;
+    Node *temp = head;
     while (temp->next != NULL)
     {
         temp = temp->next;
@@ -40,9 +40,9 @@ void insertAtTail(node *&head, int val)
     temp->next = n;
 }
 // display a linked lsit
-void display(node *head)
+void display(Node *head)
 {
-    node *temp = head;
+    Node *temp = head;
     while (temp != NULL)
     {
         cout << temp->data << "->";
@@ -50,10 +50,10 @@ void display(node *head)
     }
     cout << "NULL" << endl;
 }
-int length(node *head)
+int length(Node *head)
 {
     int l = 0;
-    node *temp = head;
+    Node *temp = head;
     while (temp != NULL)
     {
         l++;
@@ -62,7 +62,7 @@ int length(node *head)
     return l;
 }
 
-node *FindMidOptimise(node *head)
+Node *FindMidOptimise(Node *head)
 {
     //  OPtimise Algo for Find middle of linllist
     // if empty list return null
@@ -76,8 +76,8 @@ node *FindMidOptimise(node *head)
     if (head->next->next == NULL)
         return head->next;
 
-    node *slow = head;
-    node *fast = head->next;
+    Node *slow = head;
+    Node *fast = head->next;
 
     while (fast != NULL)
     {
@@ -89,10 +89,10 @@ node *FindMidOptimise(node *head)
     return slow;
 }
 
-node *findmid(node *head)
+Node *findmid(Node *head)
 {
 
-    node *temp = head;
+    Node *temp = head;
     int len = length(head);
     int mid = (len / 2);
     int pos = 0;
@@ -106,7 +106,7 @@ node *findmid(node *head)
 
 int main()
 {
-    node *head = NULL;
+    Node *head = NULL;
     insertAtHead(head, 78);
     insertAtHead(head, 7);
     insertAtHead(head, 19);
@@ -117,6 +117,6 @@ int main()
     display(head);
 
     // node *newhead = FindMidOptimise(head);
-    node *newhead = findmid(head);
+    Node *newhead = findmid(head);
     display(newhead);
 }

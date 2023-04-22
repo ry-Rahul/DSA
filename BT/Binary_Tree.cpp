@@ -1,14 +1,14 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-class node
+class Node
 {
 public:
     int data;
-    node *left;
-    node *right;
+    Node *left;
+    Node *right;
 
-    node(int val)
+    Node(int val)
     {
         data = val;
         left = NULL;
@@ -16,7 +16,7 @@ public:
     }
 };
 
-node *buildTree(node *root)
+Node *buildTree(Node *root)
 {
     int data;
     cout << "Enter the data: " << endl;
@@ -26,7 +26,7 @@ node *buildTree(node *root)
     {
         return NULL;
     }
-    root = new node(data);
+    root = new Node(data);
 
     cout << "Enter data for inserting in left of " << data << endl;
     root->left = buildTree(root->left);
@@ -37,15 +37,15 @@ node *buildTree(node *root)
     return root;
 }
 
-void levelOrderTraversal(node *root)
+void levelOrderTraversal(Node *root)
 {
-    queue<node *> q;
+    queue<Node *> q;
     q.push(root);
     q.push(NULL);
 
     while (!q.empty())
     {
-        node *temp = q.front();
+        Node *temp = q.front();
         q.pop();
         
         if(temp==NULL){
@@ -111,7 +111,7 @@ void levelOrderTraversal(node *root)
 
 */
 
-void preorderTraversal(node *root)
+void preorderTraversal(Node *root)
 {
 
     if (root == NULL)
@@ -123,7 +123,7 @@ void preorderTraversal(node *root)
     preorderTraversal(root->right);
 }
 
-void inorderTraversal(node *root)
+void inorderTraversal(Node *root)
 {
 
     if (root == NULL)
@@ -135,7 +135,7 @@ void inorderTraversal(node *root)
     inorderTraversal(root->right);
 }
 
-void postorderTraversal(node *root)
+void postorderTraversal(Node *root)
 {
 
     if (root == NULL)
@@ -147,18 +147,18 @@ void postorderTraversal(node *root)
     cout << root->data << " ";
 }
 
-void buildFromLevelOrder(node *&root)
+void buildFromLevelOrder(Node *&root)
 {
-    queue<node *> q;
+    queue<Node *> q;
     cout << "Enter data for root" << endl;
     int data;
     cin >> data;
-    root = new node(data);
+    root = new Node(data);
     q.push(root);
 
     while (!q.empty())
     {
-        node *temp = q.front();
+        Node *temp = q.front();
         q.pop();
 
         cout << "Enter left node for: " << temp->data << endl;
@@ -167,7 +167,7 @@ void buildFromLevelOrder(node *&root)
 
         if (leftData != -1)
         {
-            temp->left = new node(leftData);
+            temp->left = new Node(leftData);
             q.push(temp->left);
         }
 
@@ -177,14 +177,14 @@ void buildFromLevelOrder(node *&root)
 
         if (rightData != -1)
         {
-            temp->right = new node(rightData);
+            temp->right = new Node(rightData);
             q.push(temp->right);
         }
     }
 }
 
 // print binary tree in 2d format
-void print2D(node *root, int space)
+void print2D(Node *root, int space)
 {
     // Base case
     if (root == NULL)
@@ -209,7 +209,7 @@ void print2D(node *root, int space)
 int main()
 {
 
-    node *root = NULL;
+    Node *root = NULL;
     // root = buildTree(root);
     // 1 3 7 - 1 - 1 11 - 1 - 1 5 17 - 1 - 1 - 1
 

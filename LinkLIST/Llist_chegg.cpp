@@ -1,20 +1,20 @@
 #include<bits/stdc++.h>
 using namespace std;
 // declaring linked list
-class node
+class Node
 {
 public:
     int data;
-    node *next;
-    node(int val)
+    Node *next;
+    Node(int val)
     {
         data = val;
         next = NULL;
     }
 };
-int FindMin(node* &head)
+int FindMin(Node* &head)
 {
-    node *temp = head;
+    Node *temp = head;
     int min = head->data;
     while (temp!=NULL)
     {
@@ -26,10 +26,10 @@ int FindMin(node* &head)
     }
     return min;
 }
-void DltAtVal(node* &head,int val)
+void DltAtVal(Node* &head,int val)
 {
      
-    node *temp = head,*t;
+    Node *temp = head,*t;
     while (temp->data!=val)
     {
         t = temp;
@@ -39,14 +39,14 @@ void DltAtVal(node* &head,int val)
     delete temp;
 }
 // inserting element at head
-void insertAtHead(node *&head, int val)
+void insertAtHead(Node *&head, int val)
 {
-    node *n = new node(val);
+    Node *n = new Node(val);
     n->next = head;
     head = n;
 }
 // inserting element at tail
-void insertAtTail(node *&head, int val)
+void insertAtTail(Node *&head, int val)
 {
     if (head == NULL)
     {
@@ -54,9 +54,9 @@ void insertAtTail(node *&head, int val)
         return;
     }
 
-    node *n = new node(val);
+    Node *n = new Node(val);
     
-    node *temp = head;
+    Node *temp = head;
     while (temp->next != NULL)
     {
         temp = temp->next;
@@ -64,9 +64,9 @@ void insertAtTail(node *&head, int val)
     temp->next = n;
 }
 // display a linked lsit
-void display(node *head)
+void display(Node *head)
 {
-    node *temp = head;
+    Node *temp = head;
     while (temp != NULL)
     {
         cout << temp->data << "->";
@@ -74,10 +74,10 @@ void display(node *head)
     }
     cout << "NULL" << endl;
 }
-int length(node *head)
+int length(Node *head)
 {
     int l = 0;
-    node *temp = head;
+    Node *temp = head;
     while (temp != NULL)
     {
         l++;
@@ -88,7 +88,7 @@ int length(node *head)
 
 int main()
 {
-    node* head=NULL;
+    Node* head=NULL;
     insertAtHead(head,10);
     insertAtHead(head,20);
     insertAtHead(head,30);

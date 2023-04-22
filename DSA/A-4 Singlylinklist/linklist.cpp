@@ -3,22 +3,22 @@
 #include<conio.h>
 using namespace std;
 
-class node
+class Node
 {
 	public:
 		int data;
-		node *nxt;
+		Node *nxt;
 		
-	node(int val)
+	Node(int val)
 	{
 		data=val;
 		nxt=NULL;
 	}
 };
 
-void display(node* head)
+void display(Node* head)
 {
-	node *t;
+	Node *t;
 	t=head;
 	while(t!=NULL)
 	{
@@ -28,9 +28,9 @@ void display(node* head)
 	cout<<"NULL";
 	cout<<endl;
 }
-void deletion_end(node* &head)
+void deletion_end(Node* &head)
 {
-	 node *t1=NULL,*t2=head->nxt;
+	 Node *t1=NULL,*t2=head->nxt;
 	
 	if(head==NULL)
         cout<<"List is empty:"<<endl;
@@ -47,15 +47,15 @@ void deletion_end(node* &head)
 		delete t2;
 	}
 }
-void insertAtHead(node* &head,int val)
+void insertAtHead(Node* &head,int val)
 {
-	node *n=new node(val);
+	Node *n=new Node(val);
 	n->nxt=head;
 	head=n;
 }
-void insertAtTail(node* &head, int val)
+void insertAtTail(Node* &head, int val)
 {
-	node *n=new node(val);
+	Node *n=new Node(val);
 	
 	if(head==NULL)
 	{
@@ -63,7 +63,7 @@ void insertAtTail(node* &head, int val)
 		return;
 	}
 	
-	node *temp=head;
+	Node *temp=head;
 	while(temp->nxt!=NULL)
 	{
 		temp=temp->nxt;
@@ -72,9 +72,9 @@ void insertAtTail(node* &head, int val)
 	temp->nxt=n;
 	n->nxt=NULL;
 }
-bool search(node* head,int key)
+bool search(Node* head,int key)
 {
-	node *temp=head;
+	Node *temp=head;
 	while(temp!=NULL)
 	{
 		if(temp->data==key)
@@ -104,7 +104,7 @@ int main()
 {
 
     int data;
-	node *head=NULL;
+	Node *head=NULL;
 	
     
 

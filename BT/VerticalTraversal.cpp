@@ -1,13 +1,13 @@
 #include <bits/stdc++.h>
 using namespace std;
-class node
+class Node
 {
 public:
     int data;
-    node *left;
-    node *right;
+    Node *left;
+    Node *right;
 
-    node(int val)
+    Node(int val)
     {
         data = val;
         left = NULL;
@@ -15,12 +15,12 @@ public:
     }
 };
 
-vector<int> verticalOrder(node *root)
+vector<int> verticalOrder(Node *root)
 {
     // HD mapped with levelwise nodes levelwise means every level has its own vector      
     map<int, map<int, vector<int>>> nodes;
     //        root node     HD   level
-    queue<pair<node *, pair<int, int>>> q;
+    queue<pair<Node *, pair<int, int>>> q;
     vector<int> ans;
 
     if (root == NULL)
@@ -30,9 +30,9 @@ vector<int> verticalOrder(node *root)
 
     while (!q.empty())
     {
-        pair<node *, pair<int, int>> temp = q.front();
+        pair<Node *, pair<int, int>> temp = q.front();
         q.pop();
-        node *frontNode = temp.first;
+        Node *frontNode = temp.first;
         int hd = temp.second.first;
         int lvl = temp.second.second;
 
@@ -63,11 +63,11 @@ vector<int> verticalOrder(node *root)
 
 int main()
 {
-    node *root = new node(1);
-    root->left = new node(2);
-    root->right = new node(3);
-    root->left->left = new node(4);
-    root->left->right = new node(5);
-    root->left->left->left = new node(8);
+    Node *root = new Node(1);
+    root->left = new Node(2);
+    root->right = new Node(3);
+    root->left->left = new Node(4);
+    root->left->right = new Node(5);
+    root->left->left->left = new Node(8);
     return 0;
 }

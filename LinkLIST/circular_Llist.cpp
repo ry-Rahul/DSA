@@ -1,20 +1,20 @@
 #include<bits/stdc++.h>
 using namespace std;
 
-class node
+class Node
 {
     public:
         int data;
-        node *next;
+        Node *next;
 
         //constructor
-        node(int data)
+        Node(int data)
         {
             this->data = data;
             this->next = NULL;
         }
 
-        ~node()
+        ~Node()
         {
             int value = this->data;
             if(this->next!=NULL)
@@ -26,25 +26,25 @@ class node
         }
 };
 
-void insertnode(node* &tail, int element, int data)
+void insertnode(Node* &tail, int element, int data)
 {
     // assuming that the element is present in the list
     if(tail==NULL)
     {
-        node *newnode = new node(data);
+        Node *newnode = new Node(data);
         tail = newnode;
         newnode->next = newnode;
     }
     else{
         //non empty list
-        node* curr=tail;
+        Node* curr=tail;
         while(curr->data!=element)
         {
             curr = curr->next;
         }
     
             //element found curr is representing element wala node
-            node *temp = new node(data);
+            Node *temp = new Node(data);
             temp->next = curr->next;
             curr->next = temp;
 
@@ -52,7 +52,7 @@ void insertnode(node* &tail, int element, int data)
 
 }
 
-void deletenode(node* tail,int element)
+void deletenode(Node* tail,int element)
 {
     if(tail=NULL)
     {
@@ -61,8 +61,8 @@ void deletenode(node* tail,int element)
     else{
         // asuming element is present in the list
 
-        node *prev= tail;
-        node *curr = prev->next;
+        Node *prev= tail;
+        Node *curr = prev->next;
 
         while (curr->data!=element)
         {
@@ -75,9 +75,9 @@ void deletenode(node* tail,int element)
     }
 }
 
-void print(node* tail)
+void print(Node* tail)
 {
-    node *temp = tail;
+    Node *temp = tail;
     // temp=temp->next;
     do
     {
@@ -92,7 +92,7 @@ void print(node* tail)
 
 int main()
 {
-    node *tail = NULL;
+    Node *tail = NULL;
 
     insertnode(tail, 5, 8);
     print(tail);

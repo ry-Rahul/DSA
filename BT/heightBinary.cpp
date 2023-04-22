@@ -1,20 +1,20 @@
 #include <bits/stdc++.h>
 using namespace std;
-class node
+class Node
 {
 public:
     int data;
-    node *left;
-    node *right;
+    Node *left;
+    Node *right;
 
-    node(int val)
+    Node(int val)
     {
         data = val;
         left = NULL;
         right = NULL;
     }
 };
-int heightOfTree(node *root)
+int heightOfTree(Node *root)
 {
     if (root == NULL)
         return 0;
@@ -27,6 +27,6 @@ int heightOfTree(node *root)
 
 int main()
 {
-    node *root = NULL;
+    Node *root = NULL;
     return 0;
 }

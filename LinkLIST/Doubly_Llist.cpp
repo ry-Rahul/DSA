@@ -1,22 +1,22 @@
 #include<iostream>
 using namespace std;
 
-class node
+class Node
 {
     public:
         int data;
-        node *prev;
-        node *next;
+        Node *prev;
+        Node *next;
 
         //constructor
-        node(int data)
+        Node(int data)
         {
             this->data = data;
             this->next = NULL;
             this->prev = NULL;
         }
 
-        ~node()
+        ~Node()
         {
             int val = this->data;
             if(next!=NULL)
@@ -28,9 +28,9 @@ class node
         }
 };
 
-void print(node* head)
+void print(Node* head)
 {
-    node *temp = head;
+    Node *temp = head;
 
     while (temp!=NULL)
     {
@@ -40,9 +40,9 @@ void print(node* head)
     cout << endl;
 }
 
-int getLength(node* head)
+int getLength(Node* head)
 {
-    node *temp = head;
+    Node *temp = head;
     int count = 0;
     while (temp!=NULL)
     {
@@ -52,52 +52,56 @@ int getLength(node* head)
     return count;
 }
 
-void insertAthead(node* &head,node* &tail,int data)
+void insertAthead(Node* &head,int data)
 {
     // List is empty
     if(head==NULL)
     {
-        node *temp = new node(data);
+        Node *temp = new Node(data);
         head = temp;
-        tail = temp;
-    }
-    else{
-
-        node* temp=new node(data);
-        temp->next = head;
-        head->prev = temp;
-        head = temp;  
-    }
-}
-
-void insertAtTail(node* &head,node* &tail,int data)
-{
-    if(tail==NULL)
-    {
-        node *temp = new node(data);
-        tail = temp;
-        head = temp;
+        return;
     }
     else
     {
-        node *temp = new node(data);
-        tail->next = temp;
-        temp->prev = tail;
-        tail = temp;
+        Node *temp = new Node(data);
+        temp->next = head;
+        head->prev = temp;
+        head = temp;
+    }
+}
+
+void insertAtTail(Node* &head,int data)
+{
+    if(head==NULL){
+        insertAthead(head,data);
+        return;
+    }
+    else
+    {
+        Node *temp = new Node(data);
+        
+        Node *curr = head;
+        while (curr->next!=NULL)
+        {
+            curr = curr->next;
+        }
+        curr->next = temp;
+        temp->prev = curr;
+
     }
    
 }
 
-void insertAtPos(node* &head,node*&tail ,int pos,int data)
+void insertAtPos(Node* &head,int pos,int data)
 {
     // insertion at head
     if(pos==1)
     {
-        insertAthead(head,tail,data);
+        insertAthead(head,data);
         return;
     }
 
-    node *temp = head;
+    Node *temp = head;
     int count = 1;
     
     while (count<pos-1)
@@ -107,15 +111,15 @@ void insertAtPos(node* &head,node*&tail ,int pos,int data)
     }
     
     //insertion at last node
-    if(temp->next==NULL)
+    if(pos>getLength(head))
     {
-        insertAtTail(head,tail, data);
+        insertAtTail(head, data);
         return;
     }
 
     // insert at position
 
-    node *n = new node(data);
+    Node *n = new Node(data);
 
     n->next = temp->next;
     temp->next->prev = n;
@@ -123,80 +127,103 @@ void insertAtPos(node* &head,node*&tail ,int pos,int data)
     n->prev = temp;
 
 }
+void deleteAtHead(Node* &head)
+{
+    Node *temp = head;
+    head = head->next;
+    head->prev = NULL;
+    temp->next = NULL;
+    delete temp;
+}
+void deleteAtTail(Node* &head){
+    Node *temp = head, *prev = NULL;
+    while (temp->next!=NULL)
+    {
+        prev = temp;
+        temp = temp->next;
+    }
+    prev->next = NULL;
+    delete temp;
+}
 
-void Dltnode(node* &head,int pos)
+void Dltnode(Node* &head,int pos)
 {
     //delet first or start node
     if(pos==1)
     {
-        node *temp = head;
-
-        temp->next->prev = NULL;
-        head = temp->next;
-        temp->next = NULL;
-        delete temp;
+        deleteAtHead(head);
+        return;
      }
 
     else
     {
         //delet middle or last node
-        node *curr = head;
-        node *temp = NULL;
+        Node *curr = head;
+        Node *prev = NULL;
         int count = 1;
         while (count<pos)
         {
-            temp = curr;
+             prev= curr;
             curr = curr->next;
             count++;
         }
 
-        curr->prev = NULL;
-        if(curr->next!=NULL)
-        curr->next->prev = temp;
-        temp->next = curr->next;
+        //delet last node
+        if(curr->next==NULL)
+        {
+            deleteAtTail(head);
+            return;
+        }
+
+        //delet middle node
+        prev->next = curr->next;
+        curr->next->prev = prev;
         curr->next = NULL;
+        curr->prev = NULL;
         delete curr;
+
     }
 }
 int main()
 {
-    // node *node1 = new node(10);
-    // node* head = node1;
-    // node* tail = node1;
-
-    node* head = NULL;
-    node* tail = NULL;
-    // print(head);
+   Node *head = NULL;
+   
 
 
-    insertAthead(head,tail, 1);
+    insertAthead(head, 1);
     print(head);
 
-    insertAthead(head,tail, 2);
+    insertAthead(head, 2);
     print(head);
 
-    insertAthead(head,tail, 3);
+    insertAthead(head, 3);
     print(head);
     
-    insertAthead(head,tail, 4);
+    insertAthead(head, 4);
     print(head);
 
-    insertAtTail(head,tail, 5);
+    insertAtTail(head, 5);
     print(head);
 
-    insertAtPos(head,tail, 3, 6); 
+    insertAtPos(head, 3, 6); 
     print(head);
 
-    insertAtPos(head,tail, 1, 7); 
+    insertAtPos(head,1, 7); 
     print(head);
 
-    insertAtPos(head,tail, 8, 8); 
+    insertAtPos(head,8, 8); 
     print(head);
 
     Dltnode(head, 1);
     print(head);
 
     Dltnode(head, 7);
+    print(head);
+
+    deleteAtHead(head);
+    print(head);
+
+    deleteAtTail(head);
     print(head);
 
     cout <<"length of list is -> "<< getLength(head)<<endl;

@@ -3,21 +3,21 @@
 #include<stdio.h>
 #include<windows.h>
 using namespace std;
-class node
+class Node
 {
    public:
    int data;
-   node* nxt;
+   Node* nxt;
    
-   node(int val)
+   Node(int val)
    {
    	data=val;
    	nxt=NULL;
 	}
 };
-void removeCycle(node* &start)
+void removeCycle(Node* &start)
 {
-	node *fast,*slow;
+	Node *fast,*slow;
 	fast=slow=start;
 	do{
 		slow=slow->nxt;
@@ -34,9 +34,9 @@ void removeCycle(node* &start)
 	slow->nxt=NULL;
 	
 }
-void makecyclic(node* &start,int pos)
+void makecyclic(Node* &start,int pos)
 {
-	node *temp,*startnode;
+	Node *temp,*startnode;
 	temp=start;
 	int count=1;
 	while(temp->nxt!=NULL)
@@ -49,9 +49,9 @@ void makecyclic(node* &start,int pos)
 	}
 	temp->nxt=startnode;
 }
-bool cycliclinklist(node* &start)
+bool cycliclinklist(Node* &start)
 {
-	node *fast,*slow;
+	Node *fast,*slow;
 	fast=slow=start;
 	while(fast!=NULL && fast->nxt!=NULL)
 	{
@@ -62,9 +62,9 @@ bool cycliclinklist(node* &start)
 	}
 	return false;
 }
-void display(node* start)
+void display(Node* start)
 {
-	node *t;
+	Node *t;
 	t=start;
 	while(t!=NULL)
 	{
@@ -73,10 +73,10 @@ void display(node* start)
 	}
 	cout<<"NULL";
 }
-void inserAtTail(node* &start,int val)
+void inserAtTail(Node* &start,int val)
 {
-	node *n=new node(val);
-	node *t;
+	Node *n=new Node(val);
+	Node *t;
 	t=start;
 	if(t==NULL)
 	{
@@ -94,7 +94,7 @@ void inserAtTail(node* &start,int val)
 int main()
 {
 	
-	node *start=NULL;
+	Node *start=NULL;
 	inserAtTail(start,1);
 	inserAtTail(start,2);
 	inserAtTail(start,3);

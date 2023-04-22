@@ -1,22 +1,22 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-class node
+class Node
 {
 public:
     // data
     int data;
-    node *next;
+    Node *next;
 
     // constructor
-    node(int data)
+    Node(int data)
     {
         this->data = data;
         next = NULL;
     }
 
     // destructor
-    ~node()
+    ~Node()
     {
         int value = this->data;
         // memory free
@@ -28,11 +28,11 @@ public:
         cout << "memory is free for node with data " << value << endl;
     }
 };
-void insertAtTail(node *&head, int data)
+void insertAtTail(Node *&head, int data)
 {
-    node *n = new node(data);
+    Node *n = new Node(data);
 
-    node *temp = head;
+    Node *temp = head;
 
     while (temp->next != NULL)
     {
@@ -40,18 +40,18 @@ void insertAtTail(node *&head, int data)
     }
     temp->next = n;
 }
-void insertAtHead(node *&head, int data)
+void insertAtHead(Node *&head, int data)
 {
 
     // create new node
 
-    node *temp = new node(data);
+    Node *temp = new Node(data);
     temp->next = head;
     head = temp;
 }
-void print(node *&head)
+void print(Node *&head)
 {
-    node *temp = head;
+    Node *temp = head;
 
     while (temp != NULL)
     {
@@ -61,16 +61,16 @@ void print(node *&head)
     cout << endl;
 }
 
-void insertAtPosition(node *&head, int data, int position)
+void insertAtPosition(Node *&head, int data, int position)
 {
     // initialize a node
     int count = 1;
-    node *n = new node(data);
-    node *temp = head;
+    Node *n = new Node(data);
+    Node *temp = head;
 
     // total length of link list
     int length = 1;
-    node *len = head;
+    Node *len = head;
     while (len != NULL)
     {
         len = len->next;
@@ -102,13 +102,13 @@ void insertAtPosition(node *&head, int data, int position)
 }
 
 // deletion
-void deletNode(node *&head, int position)
+void deletNode(Node *&head, int position)
 {
 
     // deleting first or start node
     if (position == 1)
     {
-        node *temp = head;
+        Node *temp = head;
         head = head->next;
         // memory free start node
         temp->next = NULL;
@@ -117,8 +117,8 @@ void deletNode(node *&head, int position)
     else
     {
         // deletion any middle node or last node
-        node *curr = head;
-        node *prev = NULL;
+        Node *curr = head;
+        Node *prev = NULL;
 
         int count = 1;
         while (count < position)
@@ -145,7 +145,7 @@ int main()
     // head pointer to node1
     // node *head = node1;
 
-    node *head = NULL;
+    Node *head = NULL;
 
     insertAtHead(head, 45);
     print(head);

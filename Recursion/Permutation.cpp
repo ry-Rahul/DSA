@@ -1,4 +1,5 @@
 #include<bits/stdc++.h>
+
 using namespace std;
 class Solution {
 public:
@@ -21,13 +22,15 @@ public:
             ans.push_back(nums);
             return;
         }
+        unordered_set<int> s;
         for(int i = index; i<nums.size(); i++){
-            if(i!=index && nums[i]==nums[index]) continue;
-        
+           if(s.find(nums[i])!=s.end()) continue;
+            s.insert(nums[i]);
             swap(nums[index],nums[i]);
             solveRepeat(ans,index+1,nums);
             swap(nums[index],nums[i]);
         }
+
      }
     vector<vector<int>> permute(vector<int>& nums) {
         vector<vector<int>> ans;
@@ -38,7 +41,7 @@ public:
     }
 };
 int main(){
-    vector<int> nums = {1,1,2};
+    vector<int> nums = {2,2,1,1};
     Solution s;
     vector<vector<int>> ans = s.permute(nums);
     for(auto i: ans){

@@ -10,18 +10,18 @@ using namespace std;
 
 
 // declaring linked list
-class node
+class Node
 {
 public:
     int data;
-    node *next;
-    node(int val)
+    Node *next;
+    Node(int val)
     {
         data = val;
         next = NULL;
     }
 
-    ~node()
+    ~Node()
     {
         int val;
         val = this->data;
@@ -30,9 +30,9 @@ public:
     }
 };
 
-void deleteAtHead(node *&head)
+void deleteAtHead(Node *&head)
 {
-    node *temp = head;
+    Node *temp = head;
     head = head->next;
      
       delete temp;
@@ -63,13 +63,13 @@ void deleteAtHead(node *&head)
 // Recursive case for reverse a link list
 
 
-node* recursiveReverse(node* &head)
+Node* recursiveReverse(Node* &head)
 {
     // base case
     if (head == NULL || head->next == NULL)
         return head;
 
-    node *newhead = recursiveReverse(head->next);
+    Node *newhead = recursiveReverse(head->next);
 
     head->next->next = head;
     head->next = NULL;
@@ -79,12 +79,12 @@ node* recursiveReverse(node* &head)
 }
 
 // Iterative call for reverse Link list
-void reverseLink(node* &head)
+void reverseLink(Node* &head)
 {
     if(head==NULL || head->next==NULL)
         return;
 
-    node *prev = NULL, *crrnt = head, *forw = NULL;
+    Node *prev = NULL, *crrnt = head, *forw = NULL;
     while(crrnt!=NULL)
     {
         forw = crrnt->next;
@@ -96,14 +96,14 @@ void reverseLink(node* &head)
     head = prev;
 }
 // inserting element at head
-void insertAtHead(node *&head, int val)
+void insertAtHead(Node *&head, int val)
 {
-    node *n = new node(val);
+    Node *n = new Node(val);
     n->next = head;
     head = n;
 }
 // inserting element at tail
-void insertAtTail(node *&head, int val)
+void insertAtTail(Node *&head, int val)
 {
     if (head == NULL)
     {
@@ -111,9 +111,9 @@ void insertAtTail(node *&head, int val)
         return;
     }
 
-    node *n = new node(val);
+    Node *n = new Node(val);
     
-    node *temp = head;
+    Node *temp = head;
     while (temp->next != NULL)
     {
         temp = temp->next;
@@ -121,9 +121,9 @@ void insertAtTail(node *&head, int val)
     temp->next = n;
 }
 // display a linked lsit
-void display(node *head)
+void display(Node *head)
 {
-    node *temp = head;
+    Node *temp = head;
     while (temp != NULL)
     {
         cout << temp->data << "->";
@@ -131,10 +131,10 @@ void display(node *head)
     }
     cout << "NULL" << endl;
 }
-int length(node *head)
+int length(Node *head)
 {
     int l = 0;
-    node *temp = head;
+    Node *temp = head;
     while (temp != NULL)
     {
         l++;
@@ -146,7 +146,7 @@ int length(node *head)
 int main()
 {
     system("cls");
-    node * head=NULL;
+    Node * head=NULL;
     insertAtHead(head, 45);
     insertAtHead(head, 4);
     insertAtHead(head, 78);
@@ -155,7 +155,7 @@ int main()
     display(head);
 
     // reverseLink(head);
-    node *newhead = recursiveReverse(head);
+    Node *newhead = recursiveReverse(head);
     head = newhead;
 
     display(head);

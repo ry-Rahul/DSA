@@ -1,13 +1,13 @@
 #include <bits/stdc++.h>
 using namespace std;
-class node
+class Node
 {
 public:
     int data;
-    node *left;
-    node *right;
+    Node *left;
+    Node *right;
 
-    node(int val)
+    Node(int val)
     {
         data = val;
         left = NULL;
@@ -15,7 +15,7 @@ public:
     }
 };
 
-int heightOfTree(node *root)
+int heightOfTree(Node *root)
 {
     if (root == NULL)
         return 0;
@@ -27,7 +27,7 @@ int heightOfTree(node *root)
 }
 
 // its time complexity is O(n^2)
-int diameterOfBinaryTree(node *root)
+int diameterOfBinaryTree(Node *root)
 {
     // base case
     if (root == NULL)
@@ -43,7 +43,7 @@ int diameterOfBinaryTree(node *root)
 }
 
 // Its time complexity is O(n)
-pair<int, int> fastDiameter(node *root)
+pair<int, int> fastDiameter(Node *root)
 {
     if (root == NULL)
     {
@@ -65,7 +65,7 @@ pair<int, int> fastDiameter(node *root)
 }
 
 // but its time complexity is O(n^2) so we can use fastIsBalanced function
-bool isBalanced(node *root){
+bool isBalanced(Node *root){
     if(root == NULL){
         return true;
     }
@@ -84,7 +84,7 @@ bool isBalanced(node *root){
 }
 
 // fastIsBalanced function time complexity is O(n)
-pair<bool,int> isBalancedFast(node *root){
+pair<bool,int> isBalancedFast(Node *root){
     if(root==NULL){
         pair<bool, int> p = make_pair(true, 0);
         return p;
@@ -111,7 +111,7 @@ pair<bool,int> isBalancedFast(node *root){
 }
 
 // todo : check if two trees are identical or not 
-bool isIdentical(node *root1,node *root2){
+bool isIdentical(Node *root1,Node *root2){
     if(root1==NULL && root2==NULL){
         return true;
     }
@@ -136,12 +136,12 @@ bool isIdentical(node *root1,node *root2){
 }
 int main()
 {
-    node* root = new node(1);
-    root->left = new node(2);
-    root->right = new node(3);
-    root->left->left = new node(4);
-    root->left->right = new node(5);
-    root->left->left->left = new node(8);
+    Node* root = new Node(1);
+    root->left = new Node(2);
+    root->right = new Node(3);
+    root->left->left = new Node(4);
+    root->left->right = new Node(5);
+    root->left->left->left = new Node(8);
 
     // balancedFast function
     pair<bool, int> ans = isBalancedFast(root);

@@ -1,13 +1,13 @@
 #include <bits/stdc++.h>
 using namespace std;
-class node
+class Node
 {
 public:
     int data;
-    node *left;
-    node *right;
+    Node *left;
+    Node *right;
 
-    node(int val)
+    Node(int val)
     {
         data = val;
         left = NULL;
@@ -16,7 +16,7 @@ public:
 };
 
 // fastIsBalanced function time complexity is O(n)
-pair<bool, int> isBalancedFast(node *root)
+pair<bool, int> isBalancedFast(Node *root)
 {
     if (root == NULL)
     {
@@ -47,7 +47,7 @@ pair<bool, int> isBalancedFast(node *root)
 }
 
 // todo : check if two trees are identical or not
-bool isIdentical(node *root1, node *root2)
+bool isIdentical(Node *root1, Node *root2)
 {
     if (root1 == NULL && root2 == NULL)
     {
@@ -78,7 +78,7 @@ bool isIdentical(node *root1, node *root2)
 }
 
 // todo : check if a tree is sum tree or not
-pair<bool, int> isSumTreeFast(node *root)
+pair<bool, int> isSumTreeFast(Node *root)
 {
 
     // todo base case
@@ -119,19 +119,19 @@ pair<bool, int> isSumTreeFast(node *root)
     return ans;
 }
 // todo : check if a tree is sum tree or not
-bool isSumTree(node *root)
+bool isSumTree(Node *root)
 {
     return isSumTreeFast(root).first;
 }
 
 int main()
 {
-    node *root = new node(1);
-    root->left = new node(2);
-    root->right = new node(3);
-    root->left->left = new node(4);
-    root->left->right = new node(5);
-    root->left->left->left = new node(8);
+    Node *root = new Node(1);
+    root->left = new Node(2);
+    root->right = new Node(3);
+    root->left->left = new Node(4);
+    root->left->right = new Node(5);
+    root->left->left->left = new Node(8);
 
     // balancedFast function
     pair<bool, int> ans = isBalancedFast(root);

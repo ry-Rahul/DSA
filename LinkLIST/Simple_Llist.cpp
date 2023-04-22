@@ -1,51 +1,66 @@
-#include<bits/stdc++.h>
+#include <bits/stdc++.h>
 using namespace std;
-class node
+class Node
 {
-    public:
-        int data;
-        node *nxt;
+public:
+    int data;
+    Node *nxt;
 
-     //Constructor
-        node() { this->nxt = NULL; }
-        node(int data)
+    // Constructor
+    Node() { this->nxt = NULL; }
+    Node(int data)
+    {
+        this->data = data;
+        this->nxt = NULL;
+    }
+    // Distroctor
+    ~Node()
+    {
+        int value = this->data;
+        // memory free
+        if (this->nxt != NULL)
         {
-             this->data = data;
+            delete nxt;
             this->nxt = NULL;
         }
-     //Distroctor
-       ~node()
-       {
-           int value = this->data;
-           //memory free
-           if(this->nxt!=NULL)
-           {
-               delete nxt;
-               this->nxt = NULL;
-           }
-           cout << "memory free for data " << value << endl;
-       }
+        cout << "memory free for data " << value << endl;
+    }
 };
 
-void Dltnode(node* &head,int pos)
+void deleteHead(Node *&head)
 {
-    //Deletion of firsst node
-    if(pos==1)
+    Node *temp = head;
+    head = head->nxt;
+    temp->nxt = NULL;
+    delete temp;
+}
+void deleteLast(Node *&head)
+{
+    Node *temp = head, *prev = NULL;
+    while (temp->nxt != NULL)
     {
-        node *temp = head;
-        head = head->nxt;
-        temp->nxt = NULL;
-        delete temp;
+        prev = temp;
+        temp = temp->nxt;
+    }
+    prev->nxt = NULL;
+    delete temp;
+}
+void deleteNode(Node *&head, int pos)
+{
+    // Deletion of firsst node
+    if (pos == 1)
+    {
+        deleteHead(head);
         return;
     }
-  else
-  {
+    else
+    {
 
         // deletion of last node or middle node
         int count = 1;
-        node *crrnt = head;
-        node *prev=NULL;
-        while (count<pos)
+        Node *crrnt = head;
+        Node *prev = NULL;
+        while (count < pos)
         {
             prev = crrnt;
             crrnt = crrnt->nxt;
@@ -54,37 +69,37 @@ void Dltnode(node* &head,int pos)
         prev->nxt = crrnt->nxt;
         crrnt->nxt = NULL;
         delete crrnt;
-
-  }
+    }
 }
 
-
-void InsertAtHead(node* &head,int data)
+void InsertAtHead(Node *&head, int data)
 {
-    node *temp = new node(data);
+    Node *temp = new Node(data);
     temp->nxt = head;
     head = temp;
 }
 
-void insertAtTail(node* &head, int data) {
-    node* temp = new node(data);
-    if(head == NULL){
+void insertAtTail(Node *&head, int data)
+{
+    Node *temp = new Node(data);
+    if (head == NULL)
+    {
         head = temp;
         return;
     }
 
-    node *t = head;
-    while(t->nxt != NULL){
+    Node *t = head;
+    while (t->nxt != NULL)
+    {
         t = t->nxt;
     }
     t->nxt = temp;
-
 }
-int length(node* &head)
+int length(Node *&head)
 {
     int count = 0;
-    node *temp = head;
-    while(temp!=NULL)
+    Node *temp = head;
+    while (temp != NULL)
     {
         count++;
         temp = temp->nxt;
@@ -92,23 +107,23 @@ int length(node* &head)
     return count;
 }
 
-void insertAtMid(node* &head, int pos, int data)
+void insertAtMid(Node *&head, int pos, int data)
 {
     if (pos == 1)
     {
         InsertAtHead(head, data);
         return;
     }
-    if (pos>length(head))
+    if (pos > length(head))
     {
         insertAtTail(head, data);
         return;
     }
 
-    node *n = new node(data), *temp;
+    Node *n = new Node(data), *temp;
     temp = head;
     int count = 1;
-    while (count<pos-1)
+    while (count < pos - 1)
     {
         temp = temp->nxt;
         count++;
@@ -118,25 +133,25 @@ void insertAtMid(node* &head, int pos, int data)
     temp->nxt = n;
 }
 
-void print(node* &head)
+void print(Node *&head)
 {
-    node *temp = head;
-    while(temp!=NULL)
+    Node *temp = head;
+    while (temp != NULL)
     {
         cout << temp->data << "->";
-        temp=temp->nxt;
+        temp = temp->nxt;
     }
     cout << "NULL" << endl;
 }
 
 int main()
 {
-    node *head = NULL;
+    Node *head = NULL;
     InsertAtHead(head, 5);
     InsertAtHead(head, 4);
     InsertAtHead(head, 3);
     InsertAtHead(head, 2);
-    
+
     print(head);
 
     insertAtTail(head, 6);
@@ -150,4 +165,11 @@ int main()
 
     print(head);
     cout << "Length of linked list is " << length(head) << endl;
+
+    deleteNode(head, 5);
+    print(head);
+    deleteHead(head);
+    print(head);
+    deleteLast(head);
+    print(head);
 }

@@ -1,20 +1,20 @@
 #include <bits/stdc++.h>
 using namespace std;
-class node
+class Node
 {
 public:
     int data;
-    node *left;
-    node *right;
+    Node *left;
+    Node *right;
 
-    node(int val)
+    Node(int val)
     {
         data = val;
         left = NULL;
         right = NULL;
     }
 };
-int heightOfTree(node *root)
+int heightOfTree(Node *root)
 {
     if (root == NULL)
         return 0;
@@ -26,7 +26,7 @@ int heightOfTree(node *root)
 }
 
 // its time complexity is O(n^2)
-int diameterOfBinaryTree(node *root)
+int diameterOfBinaryTree(Node *root)
 {
     // base case
     if (root == NULL)
@@ -42,7 +42,7 @@ int diameterOfBinaryTree(node *root)
 }
 
 // Its time complexity is O(n)
-pair<int, int> fastDiameter(node *root)
+pair<int, int> fastDiameter(Node *root)
 {
     if (root == NULL)
     {
@@ -65,6 +65,6 @@ pair<int, int> fastDiameter(node *root)
 
 int main()
 {
-    node *root = NULL;
+    Node *root = NULL;
     return 0;
 }
