@@ -66,42 +66,42 @@ void InsertAtHead(node* &head,int data)
     head = temp;
 }
 
-/*
-void InsertAtTail(node* &head,int data)
-{
-    if(head==NULL)
-    {
-        InsertAtHead(head, data);
+void insertAtTail(node* &head, int data) {
+    node* temp = new node(data);
+    if(head == NULL){
+        head = temp;
         return;
     }
-    else
-    {
-        node *n = new node(data), *temp;
-        n->nxt = NULL;
-        temp = head;
 
-        while (temp->nxt != NULL)
-        {
-            temp = temp->nxt;
-        }
-        temp->nxt = n;
+    node *t = head;
+    while(t->nxt != NULL){
+        t = t->nxt;
     }
-   
-}
-*/
+    t->nxt = temp;
 
-void InsertAtTail(node* &tail,int data)
+}
+int length(node* &head)
 {
-    node *temp = new node(data);
-    tail->nxt = temp;
-    tail = temp;
+    int count = 0;
+    node *temp = head;
+    while(temp!=NULL)
+    {
+        count++;
+        temp = temp->nxt;
+    }
+    return count;
 }
 
-void InsertAtMid(node* &tail,node *&head, int pos, int data)
+void insertAtMid(node* &head, int pos, int data)
 {
     if (pos == 1)
     {
         InsertAtHead(head, data);
+        return;
+    }
+    if (pos>length(head))
+    {
+        insertAtTail(head, data);
         return;
     }
 
@@ -112,11 +112,6 @@ void InsertAtMid(node* &tail,node *&head, int pos, int data)
     {
         temp = temp->nxt;
         count++;
-    }
-    if (temp->nxt == NULL)
-    {
-        InsertAtTail(tail, data);
-        return;
     }
 
     n->nxt = temp->nxt;
@@ -136,34 +131,23 @@ void print(node* &head)
 
 int main()
 {
-    // node *head=NULL,*tail = NULL;
-
-    node *node1 = new node(10);
+    node *head = NULL;
+    InsertAtHead(head, 5);
+    InsertAtHead(head, 4);
+    InsertAtHead(head, 3);
+    InsertAtHead(head, 2);
     
-    // cout << node1->data << endl;
-    // cout << node1->nxt << endl;
-     node *head = node1;
-     node *tail = node1;
-     print(head);
-     
-     InsertAtHead(head, 45);
-     InsertAtHead(head, 10);
-     InsertAtHead(head, 20);
-     print(head);
-      InsertAtTail(tail, 100);
-      InsertAtTail(tail, 200);
-     print(head);
-       InsertAtMid(tail,head, 7, 500);
-     print(head);
+    print(head);
 
-     cout <<"head->data "<< head->data << endl;
-     cout <<"tail->data "<< tail->data << endl;
+    insertAtTail(head, 6);
+    insertAtTail(head, 7);
 
-     Dltnode(head,5);
-     print(head);
+    print(head);
 
-     cout << "head->data " << head->data << endl;
-     cout << "tail->data " << tail->data << endl;
+    insertAtMid(head, 4, 100);
+    insertAtMid(head, 1, 1);
+    insertAtMid(head, 9, 999);
 
-     //  print(head);
+    print(head);
+    cout << "Length of linked list is " << length(head) << endl;
 }
