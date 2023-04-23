@@ -38,6 +38,7 @@ void insertnode(Node* &tail, int element, int data)
     else{
         //non empty list
         Node* curr=tail;
+       
         while(curr->data!=element)
         {
             curr = curr->next;
@@ -47,6 +48,7 @@ void insertnode(Node* &tail, int element, int data)
             Node *temp = new Node(data);
             temp->next = curr->next;
             curr->next = temp;
+            
 
     }
 
@@ -54,29 +56,36 @@ void insertnode(Node* &tail, int element, int data)
 
 void deletenode(Node* tail,int element)
 {
-    if(tail=NULL)
+    if(tail==NULL)
     {
         cout << "List is empty, please check agian" << endl;
+        return;
     }
-    else{
-        // asuming element is present in the list
-
-        Node *prev= tail;
-        Node *curr = prev->next;
-
-        while (curr->data!=element)
+    Node *curr = tail;
+    Node *prev = NULL;
+    do
+    {
+        /* code */
+        prev = curr;
+        curr = curr->next;
+        if(curr->data==element)
         {
-            prev = curr;
-            curr = curr->next;
+            prev->next = curr->next;
+            curr->next = NULL;
+            delete curr;
+            return;
         }
-        prev->next = curr->next;
-        curr->next = NULL;
-        delete curr;
-    }
+    } while (curr!=tail);
+    
+    cout << "Element not found" << endl;
 }
 
 void print(Node* tail)
 {
+    if(tail==NULL){
+        cout << "List is empty, please check agian" << endl;
+        return;
+    }
     Node *temp = tail;
     // temp=temp->next;
     do
@@ -97,19 +106,22 @@ int main()
     insertnode(tail, 5, 8);
     print(tail);
 
-    insertnode(tail, 8, 12);
-    print(tail);
+    // insertnode(tail, 8, 12);
+    // print(tail);
 
-    insertnode(tail, 12, 16);
-    print(tail);
+    // insertnode(tail, 12, 16);
+    // print(tail);
 
-    insertnode(tail, 12, 100);
-    print(tail);
+    // insertnode(tail, 12, 100);
+    // print(tail);
 
-    insertnode(tail, 12, 8);
-    print(tail);
+    // insertnode(tail, 12, 8);
+    // print(tail);
 
-    deletenode(tail, 12);
+    // insertnode(tail, 8, 55);
+    // print(tail);
+
+    deletenode(tail,8);
     print(tail);
 }
 
