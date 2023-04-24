@@ -3,11 +3,8 @@ using namespace std;
 
 long long power(int x, int y)
 {
-    if (y == 0)
-        return 1;
-
-    if (y == 1)
-        return x;
+    if (y == 0) return 1;
+    if (y == 1) return x;
 
     // Recursive call
     long long ans = power(x, y / 2);

@@ -28,5 +28,12 @@ int heightOfTree(Node *root)
 int main()
 {
     Node *root = NULL;
+    Node* node1 = new Node(5);
+    root = node1;
+    root->right = new Node(2);
+
+    int ans = heightOfTree(root);
+    cout << ans;
+
     return 0;
 }
