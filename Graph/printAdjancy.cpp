@@ -1,8 +1,13 @@
 #include <bits/stdc++.h>
+#include <iostream>
+#include <vector>
+#include <utility>
+
 using namespace std;
+
 vector<vector<int>> printAdjList(int n ,int m, vector<pair<int, int>> edges)
 {
-    vector<vector<int>> ans(n);
+    vector<vector<int >> ans(n);
     for (int i = 0; i < m; i++){
         int u = edges[i].first;
         int v = edges[i].second;
