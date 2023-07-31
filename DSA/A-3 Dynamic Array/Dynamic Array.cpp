@@ -1,6 +1,4 @@
 #include<iostream>
-#include<conio.h>
-#include<windows.h>
 #include<stdlib.h>
 using namespace std;
 class DynamicArray
@@ -191,7 +189,7 @@ int main()
 			default:
 				cout<<"Invalid choice";
 		}
-		getch();
+		// getch();
 	}
 	
 }

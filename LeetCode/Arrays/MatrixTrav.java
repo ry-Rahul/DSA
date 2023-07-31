@@ -1,7 +1,3 @@
-/**
- * 2DMatrix
- */
-
 import java.util.ArrayList;
 import java.util.List;
 
