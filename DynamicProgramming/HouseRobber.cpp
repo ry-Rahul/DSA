@@ -29,8 +29,53 @@ int rob(vector<int> &nums)
     return solve(n - 1, nums, dp);
 }
 
+int rob2(vector<int> &nums){
+
+    int n = nums.size();
+    int dp[n];
+    dp[0] = nums[0];
+    int neg = 0;
+
+    for(int i = 1; i < n; i++){
+
+        int take = nums[i];
+        if(i>1) take+=dp[i-2];
+        int nonTake = dp[i-1];
+        dp[i] = max(take, nonTake);
+    }
+
+    return dp[n-1];
+}
+
+// space optimization 
+int rob3(vector<int> &nums){
+
+    int n = nums.size();
+    int prev = nums[0];
+    int prev2 = 0;
+
+    for(int i = 1; i < n; i++){
+
+        int take = nums[i];
+        if(i>1) take+=prev2;
+        int nonTake = prev;
+        int curr = max(take, nonTake);
+
+        prev2 = prev;
+        prev = curr;
+    }
+
+    return prev;
+}
+
 int main()
 {
+
+//     Input: nums = [1,2,3,1]
+// Output: 4
+   
+    vector<int> nums = {2,7,9,3,1};
+    cout << rob3(nums) << endl;
 
     return 0;
 }
