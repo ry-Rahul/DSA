@@ -1,25 +1,34 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-class Solution {
+class Solution
+{
 public:
-    string countAndSay(int n) {
-        
-        if(n==1){
+    string countAndSay(int n)
+    {
+
+        if (n == 1)
+        {
             return "1";
         }
 
-        string say = countAndSay(n-1);
+        string say = countAndSay(n - 1);
         string ans = "";
-        int count = 1;
-        for(int i=1; i<say.length(); i++){
-            
-        }
-        
+        for (int i = 0; i < say.length(); i++)
+        {
 
+            int count = 1;
+            char ch = say[i];
+            while (i < say.length() - 1 && say[i] == say[i + 1])
+            {
+                count++;
+                i++;
+            }
+            ans += to_string(count) + string(1, ch);
+        }
+        return ans;
     }
 };
-
 
 int main()
 {
@@ -34,7 +43,7 @@ int main()
   countAndSay(4) = say "21" = one 2 + one 1 = "12" + "11" = "1211"
     */
 
-    int n = 5;
+    int n = 4;
     Solution s;
     cout << s.countAndSay(n) << endl;
 
