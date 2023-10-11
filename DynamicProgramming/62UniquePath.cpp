@@ -33,6 +33,26 @@ public:
         }
         return dp[m-1][n-1];
     }
+
+    int spaceOptimizaiton(int m, int n){
+        int prev[n];
+        memset(prev, 0, sizeof(prev));
+        for (int i = 0; i < m; i++)
+        {
+            int temp[n];
+            memset(temp, 0, sizeof(temp)); 
+            for (int j = 0; j < n; j++)
+            {
+                if (i == 0 || j == 0)
+                    temp[j] = 1;
+                else
+                    temp[j] = prev[j] + temp[j - 1];
+            }
+            // prev = temp;
+            memcpy(prev, temp, sizeof(temp));
+        }
+        return prev[n - 1];
+    }
 };
 
 int main(){
@@ -42,6 +62,7 @@ int main(){
 
     Solution s;
     cout<<s.uniquePaths(3,7)<<endl;
+    cout<<s.spaceOptimizaiton(3,7)<<endl;
 
     return 0;
 }
