@@ -17,37 +17,10 @@ void printArr(vector<vector<int>> arr)
     cout << endl;
 }
 
-void solve(vector<int> arr, int target, vector<int> ds, vector<vector<int>> &ans, int ind)
-{
 
-    if (target == 0)
-    {
-        ans.push_back(ds);
-        return;
-    }
-
-    for (int i = ind; i < arr.size(); i++)
-    {
-        if (i > ind && arr[i] == arr[i - 1])
-            continue;
-        if (arr[i] > target)
-            break;
-        ds.push_back(arr[i]);
-        solve(arr, target - arr[i], ds, ans, i + 1);
-        ds.pop_back();
-    }
-}
-
-void findCombination(vector<int> arr, int target)
-{
-    vector<int> ds;
-    vector<vector<int>> ans;
-    int ind = 0;
-    sort(arr.begin(), arr.end());
-    solve(arr, target, ds, ans, ind);
-    printArr(ans);
-}
-
+/* picking the element and not picking the element
+    if we pick the first element then we can not pick the same second element move to next index and find that element is different or not if it is same then we can not pick that element
+ */
 void solve2(vector<int> arr, int target, vector<vector<int>> &ans, vector<int> ds, int ind)
 {
 
@@ -65,7 +38,7 @@ void solve2(vector<int> arr, int target, vector<vector<int>> &ans, vector<int> d
         if (arr[i] > target)
             break;
         ds.push_back(arr[i]);
-        solve2(arr, target, ans, ds, i + 1);
+        solve2(arr, target-arr[i], ans, ds, i + 1);
         ds.pop_back();
     }
 }

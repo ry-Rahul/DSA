@@ -36,6 +36,11 @@ public:
 };
 
 int main(){
+// leet code 416
+ 
+//     Input: nums = [1,5,11,5]
+// Output: true
+// Explanation: The array can be partitioned as [1, 5, 5] and [11].
   
   vector<int> arr = {1,5,11,5};
     Solution s;
