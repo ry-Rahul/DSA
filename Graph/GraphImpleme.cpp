@@ -5,7 +5,7 @@ template <typename T>
 class Graph
 {
 public:
-    unordered_map<T, list<T>> adj;
+    unordered_map<T, list<T>> adj;   
     void addEdge(T u, T v, bool direction)
     {
         // direction = 0 -> undirected

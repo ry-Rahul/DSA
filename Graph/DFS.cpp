@@ -1,77 +1,55 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-void dfs(int node, unordered_map<int, bool> &visited, unordered_map<int, list<int>> &adj, vector<int> &component)
-{
-    visited[node] = true;
-    component.push_back(node);
-
-// har connected node k liye recursice calll
-    for (auto neighbour : adj[node])
-    {
-        if (!visited[neighbour])
-        {
-            dfs(neighbour, visited, adj, component);
+class Solution {
+  private: 
+    void dfs(int node, vector<int> adj[], vector<int> &vis, vector<int> &ls) {
+        vis[node] = 1; 
+        ls.push_back(node); 
+        // traverse all its neighbours
+        for(auto it : adj[node]) {
+            // if the neighbour is not visited
+            if(!vis[it]) {
+                dfs(it, adj, vis, ls); 
+            }
         }
+    }
+  public:
+    // Function to return a list containing the DFS traversal of the graph.
+    vector<int> dfsOfGraph(int V, vector<int> adj[]) {
+        vector<int> vis(V, 0);
+        int start = 0;
+        // create a list to store dfs
+        vector<int> ls; 
+        // call dfs for starting node
+        dfs(start, adj, vis, ls); 
+        return ls; 
+    }
+};
+
+void addEdge(vector <int> adj[], int u, int v) {
+    adj[u].push_back(v);
+    adj[v].push_back(u);
+}
+
+void printAns(vector <int> &ans) {
+    for (int i = 0; i < ans.size(); i++) {
+        cout << ans[i] << " ";
     }
 }
 
-vector<vector<int>> depthFristSearch(int v,int E,vector<pair<int,int>> edges){
-
-    // prepare adj list
-    unordered_map<int,list<int>> adj;
-    for(int i=0;i<E;i++){
-         int u = edges[i].first;
-        int v = edges[i].second;
-
-        adj[u].push_back(v);
-        adj[v].push_back(u);
-    }
-
-    vector<vector<int>> ans;
-    unordered_map<int,bool> visited;
-
-    for (int i = 0; i < v; i++)
-    {
-        if (!visited[i])
-        {
-            vector<int> component;
-            dfs(i, visited, adj, component);
-            ans.push_back(component);
-        }
-    }
-    return ans;
-}
-int main()
+int main() 
 {
-    vector<pair<int, int>> edges;
-//     9 7
-// 0 1
-// 0 2
-// 0 5
-// 3 6
-// 7 4
-// 4 8
-// 7 8
-    edges.push_back({0, 1});
-    edges.push_back({0,2});
-    edges.push_back({0,5});
-    edges.push_back({3,6});
-    edges.push_back({7,4});
-    edges.push_back({4,8});
-    edges.push_back({7,8});
+    vector <int> adj[5];
+    
+    addEdge(adj, 0, 2);
+    addEdge(adj, 2, 4);
+    addEdge(adj, 0, 1);
+    addEdge(adj, 0, 3);
 
-    vector<vector<int>> ans = depthFristSearch(9, 7, edges);
+    Solution obj;
+    vector <int> ans = obj.dfsOfGraph(5, adj);
+    printAns(ans);
 
-    for (auto i : ans)
-    {
-        for (auto j : i)
-        {
-            cout << j << " "; 
-        }
-        cout << endl;
-    }
-  
-
-  return 0;
+    return 0;
 }

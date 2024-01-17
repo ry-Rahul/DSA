@@ -1,62 +1,51 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-void merge(int *arr,int start,int end)
-{
-    int mid = start + (end - start) / 2;
-    int val1 = mid - start + 1;
-    int val2 = end - mid;
 
-    int *first = new int[val1];
-    int *second = new int[val2];
+void merge(int arr[],int low, int mid, int high){
+    vector<int> temp;
 
-    int k = start;
-    for (int i = 0; i < val1; i++)
-        first[i] = arr[k++];
+    int left = low;
+    int right = mid+1;
 
-    k = mid + 1;
-    for (int i = 0; i < val2; i++)
-        second[i] = arr[k++];
-    
-
-    int index1 = 0;
-    int index2 = 0;
-    k = start;
-
-    while (index1<val1 && index2<val2)
-    {
-        if(first[index1]<second[index2])
-            arr[k++] = first[index1++];
-        
-        else
-            arr[k++] = second[index2++];
+    while(left<=mid && right<=high){
+        if(arr[left]<=arr[right]){
+            temp.push_back(arr[left]);
+            left++;
+        }else{
+            temp.push_back(arr[right]);
+            right++;
+        }
     }
-    while (index1<val1)
-        arr[k++] = first[index1++];
+    while(left<=mid){
+        temp.push_back(arr[left]);
+        left++;
+    }
+    while(right<=high){
+        temp.push_back(arr[right]);
+        right++;
+    }
+
+     for(int i=low; i<=high; i++){
+        arr[i]=temp[i-low];
+     }
     
-
-    while (index2 < val2)
-         arr[k++] = second[index2++];
-
-    // cout << "hii";
-    delete [] first;
-    delete [] second;
 }
 
-void mergesort(int *arr,int s,int e)
+void mergesort(int *arr,int low,int high)
 {
-    int mid = s + (e - s) / 2;
-    if(s>=e)
+    int mid = low + (high - low) / 2;
+    if(low>=high)
         return;
     
     // left merge
-    mergesort(arr, s, mid);
+    mergesort(arr, low, mid);
 
     // Right merge
-    mergesort(arr, mid + 1, e);
+    mergesort(arr, mid + 1, high);
     
     // merge
-    merge(arr, s, e);
+    merge(arr, low, mid, high);
 }
 
 void printarr(int *arr,int size)
@@ -73,10 +62,8 @@ void printarr(int *arr,int size)
 int main()
 {
   int arr[]={13,12,11,10,9,8,7,6,5,4,3,2,1,0};
-  printarr(arr, 14);
-  mergesort(arr, 0, 14);
-  printarr(arr, 14);
-
-
+//   printarr(arr, 14);
+  mergesort(arr, 0, 13);
+    printarr(arr, 14);
   return 0;
 }
