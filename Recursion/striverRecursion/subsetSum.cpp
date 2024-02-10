@@ -1,30 +1,35 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-void solve(vector<int> arr, int N, vector<int> &ds, int ind, int sum)
+void solve(vector<int> arr, vector<int> &ds, int ind, int sum)
 {
 
     if (ind == arr.size())
     {
         ds.push_back(sum);
-
+        // for(auto it :ds)
+        //     cout << it << " ";
+        // cout << endl;
         return;
     }
 
     sum += arr[ind];
-    // ds.push_back(sum);
-    solve(arr, N, ds, ind + 1, sum);
+    // ds.push_back(arr[ind]);
+    // this means we are including the current element
+    solve(arr, ds, ind + 1, sum);
 
     sum -= arr[ind];
     // ds.pop_back();
-    solve(arr, N, ds, ind + 1, sum);
+
+    // this means we are not including the current element
+    solve(arr, ds, ind + 1, sum);
 }
 void subsetSums(vector<int> arr, int N)
 {
     // Write Your Code here
     vector<int> ds;
 
-    solve(arr, N, ds, 0, 0);
+    solve(arr,  ds, 0, 0);
     for(auto it :ds)
         cout << it << " ";
     cout << endl;

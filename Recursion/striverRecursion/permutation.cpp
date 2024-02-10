@@ -33,6 +33,7 @@ void withoutExtraSpace(vector<int> nums, vector<vector<int>> &ans, int ind)
 
 
 // ________________PERMUTATION_WITH_EXTRA_SPACE____________________
+// tc-> O(n*n!)
 void solve(vector<int> nums, vector<vector<int>> &ans, vector<int> ds, int freq[])
 {
     //Permutation is a subset of Combination

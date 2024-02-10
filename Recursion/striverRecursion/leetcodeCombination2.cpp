@@ -32,9 +32,9 @@ void solve2(vector<int> arr, int target, vector<vector<int>> &ans, vector<int> d
 
     for (int i = ind; i < arr.size(); i++)
     {
-
-        if (i > ind && arr[i] == arr[i - 1])
+        if (i != ind && arr[i] == arr[i - 1])
             continue;
+        // if the current element is greater than the target then we can not pick that element
         if (arr[i] > target)
             break;
         ds.push_back(arr[i]);

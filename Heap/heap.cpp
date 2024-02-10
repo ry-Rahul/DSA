@@ -12,42 +12,47 @@ public:
     {
         arr[0] = -1;
         size = 0;
-    }  
+    }
 
     void print();
     void deletion();
     void heapify(int arr[], int n, int i);
+    void insert(int x);
+    void heapSort(int arr[], int n);
+};
 
-        void insert(int val)
+// Inserting __________________________________________
+void heap::insert(int val)
+{
+    size = size + 1;
+    int index = size;
+    arr[index] = val;
+
+    while (index > 1)
     {
-        size = size + 1;
-        int index = size;
-
-        while (index > 1)
+        int parent = index / 2;
+        if (arr[parent] < arr[index])
         {
-            int parent = index / 2;
-
-            if (val <= arr[parent])
-            {
-                break;
-            }
-             arr[index]=arr[parent];
+            swap(arr[parent], arr[index]);
             index = parent;
         }
-        arr[index] = val;
+        else
+        {
+            return;
+        }
     }
-};
+}
 
 void heap::heapify(int arr[], int n, int i)
 {
     int largest = i;
-    int left = 2 * i ;
+    int left = 2 * i;
     int right = 2 * i + 1;
 
-    if (left < n && arr[left] > arr[largest])
+    if (left <= n && arr[left] > arr[largest])
         largest = left;
 
-    if (right < n && arr[right] > arr[largest])
+    if (right <= n && arr[right] > arr[largest])
         largest = right;
 
     if (largest != i)
@@ -66,9 +71,9 @@ void heap::deletion()
     }
     else
     {
-       // step1: put last element into first index
+        // step1: put last element into first index
         arr[1] = arr[size];
-        // int last =arr[size]; 
+        // int last =arr[size];
         size--;
         // taking root node to its correct position
         int i = 1;
@@ -76,41 +81,34 @@ void heap::deletion()
         {
             int left = 2 * i;
             int right = 2 * i + 1;
-            
-            // if(last>= arr[left]&& last>=arr[right])
-            // {
-            //     arr[i]=last;
-            // }
-            // if(arr[left]>arr[right])
-            // {
-            //     arr[i]=arr[left];
-            //     i=left;
-            // }
-            // else
-            // {
-            //     arr[i]=arr[right];
-            //     i=right;
-            // }
-            // if(left==size && arr[size]<arr[left])
-            // {
-            //     arr[i]=arr[left];
-            //     i=left;
-            // }
-            // arr[i]= last;
-            
-            if(left < size && arr[i] < arr[left] ){
+
+            if (left < size && arr[i] < arr[left])
+            {
                 swap(arr[i], arr[left]);
-                i = left;  
+                i = left;
             }
-            else if(right < size && arr[i] < arr[right] ){
+            else if (right < size && arr[i] < arr[right])
+            {
                 swap(arr[i], arr[right]);
                 i = right;
             }
-            else{
+            else
+            {
                 return;
             }
-
         }
+    }
+}
+
+// Heap Sort____________________________________________________
+void heap::heapSort(int arr[], int n)
+{
+    int size = n;
+    while (size > 1)
+    {
+        swap(arr[1], arr[size]);
+        size--;
+        heapify(arr, size, 1);
     }
 }
 void heap::print()
@@ -126,25 +124,35 @@ int main()
 {
     heap h;
     int test_case = 5;
-    
+
     h.insert(50);
     h.insert(55);
     h.insert(53);
     h.insert(52);
     h.insert(54);
-    
+
     h.print();
     h.deletion();
     h.print();
 
-    int arr[6]={0,54,53,55,52,50};
+    int arr[6] = {0, 54, 53, 55, 52, 50};
     int n = 5;
-    for (int i = n / 2 ; i > 0; i--){
+    for (int i = n / 2; i > 0; i--)
+    {
         h.heapify(arr, n, i);
     }
-    cout<<"Heapified array is: ";
-        
-    for (int i = 1; i <= n; i++){
+    cout << "Heapified array is: ";
+
+    for (int i = 1; i <= n; i++)
+    {
         cout << arr[i] << " ";
-    }cout<<endl;
+    }
+    cout << endl;
+
+    h.heapSort(arr, n);
+    cout << "Sorted array is: ";
+    for (int i = 1; i <= n; i++)
+    {
+        cout << arr[i] << " ";
+    }
 }

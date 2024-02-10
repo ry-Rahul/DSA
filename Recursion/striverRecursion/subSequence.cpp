@@ -1,27 +1,6 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-void printSubSequence(int arr[], int n)
-{
-
-    // i<(1<<n) is same as i<2^n
-    int len = pow(2, n);
-    for (int i = 0; i < len; i++)
-    {
-        for (int j = 0; j < n; j++)
-        {
-
-            // check if jth bit is set in i
-            if (i & (1 << j))
-            {
-                cout << arr[j] << " ";
-            }
-        }
-        cout << endl;
-    }
-}
-
-
 // print subsequence using recursion 
 void helperSolve(int arr[], int n, int ind, vector<int> &ds)
 {
@@ -50,7 +29,7 @@ void printSubSeqRec(int arr[], int n)
     helperSolve(arr, n, 0, ds);
 }
 
-// print only one subsequnce which is equal to k
+// print only one subsequnce which is equal to k___________________________________________
 bool OnlyOneSolToK(int arr[], int n, int ind, int k, int sum, vector<int> ans)
 {
 
@@ -85,7 +64,7 @@ bool OnlyOneSolToK(int arr[], int n, int ind, int k, int sum, vector<int> ans)
     return false;
 }
 
-// solve function
+// print subsequence of sum is equal to k___________________________________________________
 void solve(int arr[], int n, int ind, int k, int sum, vector<int> ans)
 {
 
@@ -117,7 +96,7 @@ void printSumIsK(int arr[], int n, int k)
     solve(arr, n, 0, k, 0, ds);
 }
 
-// count the sum of subsequence is equal to k
+// count the sum of subsequence is equal to k____________________________________________________
 int countSubSeqIsK(int arr[], int n, int ind, int k, vector<int> ans, int sum)
 {
 
@@ -135,13 +114,14 @@ int countSubSeqIsK(int arr[], int n, int ind, int k, vector<int> ans, int sum)
 
     sum -= arr[ind];
     int right = countSubSeqIsK(arr, n, ind + 1, k, ans, sum);
+
     return left + right;
 }
 
 int main()
 {
 
-    int arr[] = {1, 2, 3};
+    int arr[] = { 1,4,4,5};
     int n = sizeof(arr) / sizeof(arr[0]);
 
     // printSubSequence(arr, n);
@@ -152,7 +132,7 @@ int main()
     // OnlyOneSolToK(arr, n, 0, 2, 0, ans);
 
     // count number of subSequence is equal to k
-    cout << countSubSeqIsK(arr, n, 0, 3, ans, 0) << endl;
+    cout << countSubSeqIsK(arr, n, 0, 5, ans, 0) << endl;
 
     return 0;
 }

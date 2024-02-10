@@ -18,15 +18,16 @@ void solve(vector<int> arr,int target, vector<int> ds, vector<vector<int>> &ans,
     }
     solve(arr, target, ds, ans, ind+1);
 
-    //pirnt 
-
 }
+
+
 
 void CombinationSum(vector<int> arr, int target){
 
     vector<int> ds;
     vector<vector<int>> ans;
     int n = arr.size();
+    // vector<vector<int>> dp(n, vector<int>(target+1, -1));
     solve(arr, target, ds, ans,0);
 
 // print the arrays

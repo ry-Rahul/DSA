@@ -1,39 +1,43 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-#include <bits/stdc++.h>
-using namespace std;
 
-void solve(vector<int> arr, int N, vector<int> &ds, int ind)
-{
-
-    if (ind == arr.size())
-    {
-        for (auto it : ds)
-            cout << it;
-        cout << endl;
-        return;
+ void solve(vector<int> &nums,vector<vector<int>> &ans,vector<int> &ds,int ind){
+        ans.push_back(ds);
+        for(int i=ind; i<nums.size(); ++i){
+            if(i!=ind && nums[i]==nums[i-1])continue;
+            ds.push_back(nums[i]);
+            solve(nums,ans,ds,i+1);
+            ds.pop_back();
+        }
     }
+    vector<vector<int>> subsetsWithDup(vector<int>& nums) {
+        // set<vector<int>> ans;
+        vector<int> ds;
+        vector<vector<int>> ans;
+        sort(nums.begin(), nums.end());
 
-    ds.push_back(arr[ind]);
-    solve(arr, N, ds, ind + 1);
+        solve(nums,ans,ds,0);
 
-    ds.pop_back();
-    solve(arr, N, ds, ind + 1);
-}
-void subsetSums(vector<int> arr, int N)
-{
-    // Write Your Code here
-    vector<int> ds;
+        // for(auto &it : ans){
+        //     temp.push_back(it);
+        // }
 
-    solve(arr, N, ds, 0);
-}
+        for(auto &it : ans){
+            for(auto &i : it){
+                cout<<i<<" ";
+            }
+            cout<<endl;
+        }
+        return ans;
+
+    }
 int main()
 {
 
     vector<int> arr = {1, 2, 2};
     int N = 3;
-    subsetSums(arr, N);
+    subsetsWithDup(arr);
 
     return 0;
 }
