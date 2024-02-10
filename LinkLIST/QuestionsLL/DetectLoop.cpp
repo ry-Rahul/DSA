@@ -133,6 +133,21 @@ void printNode(Node *head)
     }
     cout << endl;
 }
+// remove cycle
+void removeCycle(Node* head){
+    Node* slow = head;
+    Node* fast = head;
+    do{
+        slow = slow->next;
+        fast = fast->next->next;
+    }while(slow!=fast);
+    fast = head;
+    while(slow->next!=fast->next){
+        slow = slow->next;
+        fast = fast->next;
+    }
+    slow->next = NULL;
+}
 
 int main()
 {

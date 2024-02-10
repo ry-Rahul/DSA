@@ -16,6 +16,9 @@ int main()
   for(int i=0; i<10; i++)
     ans=ans^arr[i];
 
+    // a^a = 0
+    // a^0 = a
+
   for (int j = 1 ; j <10 ; j++)
   {
      ans=ans^j;
