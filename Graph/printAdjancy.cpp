@@ -40,6 +40,7 @@ void printGraph(vector<vector<int>> adj)
 int main()
 {
     vector<pair<int, int>> edges;
+    // int arr[] = {0, 1, 2, 3};
     edges.push_back({1, 2});
     edges.push_back({0,3});
     edges.push_back({2,3});

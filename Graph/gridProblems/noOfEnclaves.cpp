@@ -104,6 +104,10 @@ int main()
                                 {0, 0, 0, 0}};
     Solution s;
     cout << s.numEnclaves(grid)<<endl;
+   
+    // enclave is a land which is connected to the boundary of the grid
+    // so the lands which are not connected to the boundary are enclaves
+    // so the output is 3
 
     return 0;
 }

@@ -3,3 +3,6 @@
 *.exe
 *.class
 tempCodeRunnerFile.cpp
+.DS_Store
+*
+!*.cpp

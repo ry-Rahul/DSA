@@ -12,6 +12,9 @@ public:
 
         queue<pair<pair<int,int>,int>> q;
 
+        // grid[i][j]=2 means rotten
+        // grid[i][j]=1 means fresh
+        // grid[i][j]=0 means empty
         for(int i=0; i<n ; i++){
             for(int j=0; j<m ; j++){
                 if(grid[i][j]==2){
@@ -50,6 +53,8 @@ public:
             }
         }
 
+
+// check all fresh oranges are rotten or not 
         for(int i=0; i<n ; i++){
             for(int j=0; j<m ; j++){
                if(vis[i][j]!=2 && grid[i][j]==1){

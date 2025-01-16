@@ -53,7 +53,9 @@ int main()
 {
     // Input: grid = [[0,1,-1],[1,0,-1],[1,1,1]]
     // Output: 5
-    vector<vector<int>> grid = {{0, 1, -1}, {1, 0, -1}, {1, 1, 1}};
+    vector<vector<int>> grid = {{0, 1, -1},
+                                {1, 0, -1}, 
+                                {1, 1, 1}};
     Solution obj;
     cout << obj.cherryPickup(grid) << endl;
 

@@ -25,6 +25,20 @@ vector<int> nextGreaterElement(vector<int> &nums)
     return ans;
 }
 
+void nextGreaterEle(vector<int>& nums){
+    int n= nums.size();
+    vector<int> ans(n);
+    for(int i=0; i<n; i++){
+        ans[i]=-1;
+        for(int j=i+1; j<n; j++){
+            if(nums[j]>nums[i]){,
+                ans[i]=nums[j];
+                break;
+            }
+        }
+    }
+}
+
 // variation of this problem is to find the next greater element in circular array
 vector<int> nextGreaterElement(vector<int> &nums1, vector<int> &nums2)
 {

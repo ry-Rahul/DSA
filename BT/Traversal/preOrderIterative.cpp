@@ -33,7 +33,9 @@ vector<int> preorderTraversal(TreeNode* root) {
             st.push(node->left);
         }
     }
+
     return ans;
+
 }
 int main(){
 
@@ -42,6 +44,11 @@ int main(){
     root->right=new TreeNode(2);
     root->right->left=new TreeNode(5);
     root->right->right=new TreeNode(4);
+    //                1
+    //              /   \
+    //             3     2
+    //                  / \
+    //                 5   4
     vector<int> ans=preorderTraversal(root);
     for(auto it:ans){
         cout<<it<<" ";

@@ -1,7 +1,4 @@
-#include<iostream>    //Queue  using Linked List:
-#include<conio.h>
-#include<stdlib.h>
-#include<windows.h>
+#include<bits/stdc++.h>
 using namespace std;  
 class Queue
 {
@@ -82,5 +79,4 @@ int main()
 	q1.dltData();
 	q1.viewData();
 	
-	getch();
 }

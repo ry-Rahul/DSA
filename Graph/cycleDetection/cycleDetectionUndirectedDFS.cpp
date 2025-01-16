@@ -38,24 +38,23 @@ bool isCycle(int V, vector<int> adj[])
 int main()
 {
 
-    // adj = {{1}, {0, 2, 4}, {1, 3}, {2, 4}, {1, 3}}
-    // 0---1---2
-    //     |   |
-    //     4---3
+    int t;
+    cin >> t;
+    while(t--){
+        int V, E;
+        cin >> V >> E;
+        vector<int> adj[V];
+        for (int i = 0; i < E; i++)
+        {
+            int u, v;
+            cin >> u >> v;
+            adj[u].push_back(v);
+            adj[v].push_back(u);
+        }
+        cout << isCycle(V, adj) << endl;
+    }
 
-    vector<int> adj[5];
-    adj[0].push_back(1);
-    adj[1].push_back(0);
-    adj[1].push_back(2);
-    adj[1].push_back(4);
-    adj[2].push_back(1);
-    adj[2].push_back(3);
-    adj[3].push_back(2);
-    adj[3].push_back(4);
-    adj[4].push_back(1);
-    adj[4].push_back(3);
 
-    cout << isCycle(5, adj) << endl;
 
     return 0;
 }

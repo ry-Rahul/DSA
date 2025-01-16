@@ -1,8 +1,4 @@
-// package LeetCode.BSearch;
 
-/**
- * ProductOfArryExceptItSelf
- */
 import java.util.Arrays;
 
 public class ProductOfArryExceptItSelf {

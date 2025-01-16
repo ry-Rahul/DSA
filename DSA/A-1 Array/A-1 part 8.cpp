@@ -1,6 +1,4 @@
 #include<iostream>
-#include<conio.h>
-#include<windows.h>
 using namespace std;
 
 struct  temp
@@ -15,9 +13,8 @@ struct  temp
 	{
 		cout<<min<<"c  "<<max<<"c  "<<endl;
 	}
-	
-	int minavg(struct temp)
-	
+
+    int minavg(struct temp);
 };
 
 int main()
@@ -32,5 +29,4 @@ int main()
 	t5.input(6,25);
 
 
-	getch();
 }

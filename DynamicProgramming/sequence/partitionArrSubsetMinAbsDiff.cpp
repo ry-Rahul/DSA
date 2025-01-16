@@ -4,6 +4,7 @@ using namespace std;
 class Solution
 {
 public:
+
       int minimumDifference(vector<int> &nums)
     {
         int n = nums.size();
@@ -68,7 +69,7 @@ int main()
     // Explanation: One optimal partition is: [3,9] and [7,3].
     // The absolute difference between the sums of the arrays is abs((3 + 9) - (7 + 3)) = 2.
 
-    vector<int> arr = {3, 2, 7};
+    vector<int> arr = {3, 9, 7, 3};
     Solution s;
     int n = arr.size();
     cout << s.minimumDifference(arr) << endl;

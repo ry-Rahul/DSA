@@ -5,6 +5,8 @@ void nextPermutation(vector<int> &nums)
     int ind = -1;
     int n = nums.size();
 
+    // find the first decreasing element from the end
+    // 2, 1, 5, 4, 3, 0, 0
     for (int i = n - 2; i >= 0; i--)
         if (nums[i] < nums[i + 1])
         {
@@ -18,7 +20,7 @@ void nextPermutation(vector<int> &nums)
         return;
     }
 
-    for(int i=nums.size()-1;i>=0;i--){
+    for(int i=n-1;i>=0;i--){
         if(nums[i]>nums[ind]){
             swap(nums[i],nums[ind]);
             break;

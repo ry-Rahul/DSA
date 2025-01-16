@@ -1,4 +1,6 @@
-#include <bits/stdc++.h>
+
+
+#include<bits/stdc++.h>
 using namespace std;
 
 class Solution
@@ -118,7 +120,9 @@ int main()
     // Output: 7
 
     // vector<vector<int>> grid = {{1, 3, 5}, {2, 1, 2}, {4, 3, 1}};
-    vector<vector<int>> grid = {{1, 3, 1}, {1, 5, 1}, {4, 2, 1}};
+    vector<vector<int>> grid = {{1, 3, 1}, 
+                                {1, 5, 1},
+                                {4, 2, 1}};
     Solution obj;
     // cout << obj.minPathSum(grid) << endl;
     cout << minSumPath(grid) << endl;

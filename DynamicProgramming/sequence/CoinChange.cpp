@@ -2,6 +2,8 @@
 using namespace std;
 // 322 leetcode coin change
 
+
+// min number of coins to make amount using coins
 class Solution
 {
 public:
@@ -77,10 +79,20 @@ public:
 int main()
 {
 
-    vector<int> coins = {1, 2, 5,6};
+    vector<int> coins = {1, 2, 5,6,9};
     int amount = 11;
     Solution s;
     cout << s.coinChange(coins, amount) << endl;
 
     return 0;
 }
+
+
+// 9-5
+// 8-4
+// 7-3
+// 6-2
+// 3-1
+// 1-0
+
+

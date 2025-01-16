@@ -37,6 +37,14 @@ int knapsack(vector<int> wt, vector<int> val, int n, int maxWeight)
 
     // Tabulation
     vector<vector<int>> dp(n, vector<int>(maxWeight + 1, 0));
+
+    /*  if (ind == 0)
+    {
+        if (wt[0] <= W)
+            return val[0];
+        else
+            return 0;
+    } */
     for (int W = wt[0]; W <= maxWeight; W++)
     {
         dp[0][W] = val[0];

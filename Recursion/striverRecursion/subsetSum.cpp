@@ -1,7 +1,7 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-void solve(vector<int> arr, vector<int> &ds, int ind, int sum)
+void solve(vector<int> arr, vector<int> &ds, int ind, int &sum)
 {
 
     if (ind == arr.size())
@@ -28,8 +28,9 @@ void subsetSums(vector<int> arr, int N)
 {
     // Write Your Code here
     vector<int> ds;
+    int sum=0;
 
-    solve(arr,  ds, 0, 0);
+    solve(arr,  ds, 0, sum);
     for(auto it :ds)
         cout << it << " ";
     cout << endl;

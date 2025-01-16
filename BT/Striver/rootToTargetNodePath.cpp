@@ -17,21 +17,17 @@ bool getPath(TreeNode* root,int target,vector<int> &ans){
     if(root==NULL){
         return false;
     }
-
-
     ans.push_back(root->val);
     if(root->val==target){
         return true;
     }
-
     bool res = getPath(root->left,target,ans) || getPath(root->right,target,ans);
     if(res==true){
         return true;
     }
     ans.pop_back();
-
-    return false;
-}
+    return false;   
+} 
 
 vector<int> nodeTotargetPath(TreeNode* root,int target){
     if(root==NULL){

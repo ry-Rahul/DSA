@@ -8,7 +8,7 @@ vector<int> bruteForce(string str1, string str2)
     vector<int> ans;
     // 0  1  2  3  4  5  6  7  8  9  10   11
     // a  b  x  a  b  c  y  h  g  a   b   c
-    // acb
+    // a  c  b
 
     // i=0 -> 10
     // n=12   m = 3

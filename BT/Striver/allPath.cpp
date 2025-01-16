@@ -44,6 +44,21 @@ vector<string> binaryTreePaths(TreeNode *root)
 }
 int main()
 {
+    TreeNode *root = new TreeNode(1);
+    root->left = new TreeNode(2);
+    root->right = new TreeNode(3);
+    root->left->right = new TreeNode(5);
+    root->right->right = new TreeNode(6);
+    root->left->left = new TreeNode(4);
+    root->left->left->left = new TreeNode(7);
+    root->left->left->right = new TreeNode(8);
+
+    vector<string> ans = binaryTreePaths(root);
+    for (auto i : ans)
+    {
+        cout << i << endl;
+    }
+    
 
     return 0;
 }

@@ -2,7 +2,14 @@
 using namespace std;
 /*
 1. Do a topological sort
-2. Take a node out from the stack and relax all its edges  */
+2. Take a node out from the stack and relax all its edges
+3. why we use topo sort for this problem?
+    - because we can only relax the edges of a node after we have relaxed the edges of all the nodes that are coming to it
+    - so we need to relax the edges in a specific order
+    - that order is given by the topological so rt
+
+    move according to reachability
+  */
 
 void topologicalSort(int node, vector<pair<int, int>> adj[], vector<int> &vis, stack<int> &st)
 {

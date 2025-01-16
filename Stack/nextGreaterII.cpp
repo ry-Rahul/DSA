@@ -1,14 +1,14 @@
 #include <bits/stdc++.h>
 using namespace std;
-vector<int> nextGreater(vector<int> &nums)
-{
+
+vector<int> nextGreater(vector<int> &nums){
+
     stack<int> st;
     int n = nums.size();
     vector<int> arr(n);
 
     vector<int> ans(n);
-    for (int i = 2 * n; i>=0; i--)
-    {
+    for (int i = 2 * n; i>=0; i--){
             
           while(!st.empty() && st.top()<=nums[i%n]){
               st.pop();

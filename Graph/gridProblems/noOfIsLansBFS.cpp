@@ -13,6 +13,7 @@ public:
 
         queue<pair<int, int>> q;
         q.push({row, col});
+        vis[row][col] = 1;
 
         while (!q.empty())
         {
@@ -59,6 +60,8 @@ public:
         return cnt;
     }
 };
+
+
 int main()
 {
 
@@ -72,8 +75,17 @@ int main()
                                  {'1', '1', '0', '0', '0'},
                                  {'0', '0', '1', '0', '0'},
                                  {'0', '0', '0', '1', '1'}};
-    Solution s;
-    cout << s.numIslands(grid) << endl;
+
+    vector<vector<char>> grid2 = {
+        {'1', '1' ,'1', '0'},
+        {'0', '1', '0', '1'},
+        {'1', '0', '1', '0'},
+        {'0', '1', '0', '1'}
+    };
+     Solution s;
+    cout << s.numIslands(grid2) << endl;
+
+
 
     return 0;
 }

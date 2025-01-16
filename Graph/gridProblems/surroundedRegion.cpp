@@ -45,6 +45,7 @@ public:
             }
         }
     }
+    
     void solve(vector<vector<char>> &board)
     {
         int n = board.size();
@@ -56,49 +57,36 @@ public:
         int dCol[] = {0, 1, 0, -1};
 
         // rows traversal
-        for (int i = 0; i < m; i++)
-        {
-
+        for (int i = 0; i < m; i++){
             // first row
-            if (!vis[0][i] && board[0][i] == 'O')
-            {
+            if (!vis[0][i] && board[0][i] == 'O'){
                 dfs(0, i, vis, board, dRow, dCol);
             }
 
             // last row
-            if (!vis[n - 1][i] && board[n - 1][i] == 'O')
-            {
+            if (!vis[n - 1][i] && board[n - 1][i] == 'O'){
                 dfs(n - 1, i, vis, board, dRow, dCol);
             }
         }
 
         // printBoard(board);
-
         // columns traversal
         for (int i = 0; i < n; i++)
         {
-
             // first col
             if (!vis[i][0] && board[i][0] == 'O')
-            {
                 dfs(i, 0, vis, board, dRow, dCol);
-            }
 
             // last col
             if (!vis[i][m - 1] && board[i][m - 1] == 'O')
-            {
                 dfs(i, m - 1, vis, board, dRow, dCol);
-            }
         }
 
         printBoard(board);
 
-        for (int i = 0; i < n; i++)
-        {
-            for (int j = 0; j < m; j++)
-            {
-                if (!vis[i][j] && board[i][j] == 'O')
-                {
+        for (int i = 0; i < n; i++){
+            for (int j = 0; j < m; j++){
+                if (!vis[i][j] && board[i][j] == 'O'){
                     vis[i][j] = 1;
                     board[i][j] = 'X';
                 }

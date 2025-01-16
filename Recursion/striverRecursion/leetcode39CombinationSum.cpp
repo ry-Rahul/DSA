@@ -2,7 +2,7 @@
 using namespace std;
 void printArr(vector<vector<int>> arr);
 
-void solve(vector<int> arr,int target, vector<int> ds, vector<vector<int>> &ans,int ind){
+void solve(vector<int> arr,int target, vector<int> &ds, vector<vector<int>> &ans,int ind){
 
     if(ind==arr.size()){
         if(target==0){
@@ -11,12 +11,12 @@ void solve(vector<int> arr,int target, vector<int> ds, vector<vector<int>> &ans,
         return;
     }
 
+    solve(arr, target, ds, ans, ind+1);
     if(target>=arr[ind]){
         ds.push_back(arr[ind]);
         solve(arr, target - arr[ind], ds, ans, ind);
         ds.pop_back();
     }
-    solve(arr, target, ds, ans, ind+1);
 
 }
 
@@ -49,7 +49,7 @@ int main()
     //   Input: candidates = [2,3,6,7], target = 7
     // Output: [[2,2,3],[7]]
 
-    vector<int> v = {2, 3, 6, 7};
+    vector<int> v = {2, 3, 6, 7,1};
     int target = 7;
 
     CombinationSum(v, target);

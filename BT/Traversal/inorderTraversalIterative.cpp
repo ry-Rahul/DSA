@@ -19,7 +19,13 @@ vector<int> inorderTraversal(TreeNode* root){
     if(root==NULL){
         return ans;
     }
-
+    //             1
+    //           /   \
+    //          2     3
+    //         / \
+    //        4   5
+    //           / \
+    //          6   7
     while(true){
 
         //  L N R
@@ -28,7 +34,7 @@ vector<int> inorderTraversal(TreeNode* root){
             node=node->left;
         }
         else{
-            if(st.empty()){
+            if(st.empty()){ 
                 break;
             }
             node=st.top();
@@ -49,6 +55,7 @@ int main(){
     root->left->right=new TreeNode(5);
     root->left->right->left=new TreeNode(6);
     root->left->right->right=new TreeNode(7);
+  
     vector<int> ans=inorderTraversal(root);
     for(auto it:ans){
         cout<<it<<" ";

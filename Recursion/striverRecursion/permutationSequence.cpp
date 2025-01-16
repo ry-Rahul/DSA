@@ -18,7 +18,7 @@ public:
     }
     string getPermutation(int n, int k) {
         vector<string> ans;
-        int l=n;
+        int l=n; 
         string str="";
         for(int i=1; i<=n; i++){
             str+=to_string(i);

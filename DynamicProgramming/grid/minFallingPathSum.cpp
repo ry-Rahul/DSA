@@ -65,7 +65,7 @@ int tabulationMethod(vector<vector<int>> &matrix)
                 right += 1e8;
 
             int left = matrix[i][j];
-            if (j - 1 > 0)
+            if (j - 1 >= 0)
                 left += dp[i - 1][j - 1];
             else
                 left += 1e8;

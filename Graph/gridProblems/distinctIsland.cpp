@@ -43,7 +43,6 @@ void dfs(int row,int col, vector<vector<int>>& grid ,
                     vector<pair<int,int>> vec;
                     dfs(i,j,grid,vis,vec,i,j);
                     st.insert(vec);
-                    
                 }
             }
         }

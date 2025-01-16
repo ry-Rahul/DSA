@@ -55,7 +55,14 @@ int main(){
 
     vector<vector<int>> isConnected = {{1,1,0},{1,1,0},{0,0,1}};
     Solution obj;
-    cout<<obj.findCircleNum(isConnected);
+
+       vector<vector<int>> grid2 = {
+        {1, 0, 1, 0},
+        {0, 1, 0, 1},
+        {1, 0, 1, 0},
+        {0, 1, 0, 1}
+    };
+    cout<<obj.findCircleNum(grid2);
   
 
   return 0;

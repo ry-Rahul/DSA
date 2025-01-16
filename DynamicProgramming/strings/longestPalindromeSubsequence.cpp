@@ -1,7 +1,8 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-
+// 1312. Minimum Insertion Steps to Make a
+// String Palindrome
 class Solution {
 public:
     int lcs(string s1,string s2){
@@ -37,7 +38,7 @@ public:
 
 int main(){
 
-    string str = "bbabcbcab";
+    string str = "bbbab";
 
     Solution s;
     cout<<s.longestPalindromeSubseq(str)<<endl;

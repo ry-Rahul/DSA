@@ -26,6 +26,11 @@ bool subsetSumToK(int n, int k, vector<int> &arr) {
     //  return solve(n-1, k, arr,dp);
 
     vector<vector<bool>> dp(n, vector<bool>(k+1, 0));
+
+    /*  if(target==0)
+          return true;
+       if(ind==0)
+          return target == arr[0]; */
     for(int i = 0; i<n; i++){
         dp[i][0] = true;
     }

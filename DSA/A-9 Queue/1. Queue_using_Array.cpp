@@ -1,7 +1,4 @@
 #include<iostream>
-#include<conio.h>
-#include<stdlib.h>
-
 using namespace std;
 class Queue
 {
@@ -91,5 +88,4 @@ int main()
 	cout<<q1.getFront()<<" ";
 	cout<<q1.getRear()<<" ";
 	
-	getch();
 }
